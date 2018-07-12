@@ -1,0 +1,100 @@
+[
+  {
+    "oid": "ATR000002nzscf",
+    "academicTrackName": "Comparative Arts 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Comparative Arts"
+  },
+  {
+    "oid": "ATR000002oljyv",
+    "academicTrackName": "Motion Picture Arts 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "MPA"
+  },
+  {
+    "oid": "ATR000002olk9P",
+    "academicTrackName": "Music - Composition 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Composition"
+  },
+  {
+    "oid": "ATR000002olkes",
+    "academicTrackName": "Visual Arts 2018",
+    "maxCredit": 12,
+    "minCredit": 1,
+    "type": "Visual Arts"
+  },
+  {
+    "oid": "ATR000002olkJt",
+    "academicTrackName": "Theatre Arts - D&P 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Theatre D/P"
+  },
+  {
+    "oid": "ATR000002olkpM",
+    "academicTrackName": "Theatre Arts - Performance 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Theatre"
+  },
+  {
+    "oid": "ATR000002olkUO",
+    "academicTrackName": "Music - Piano 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Piano"
+  },
+  {
+    "oid": "ATR000002olkzq",
+    "academicTrackName": "Music - Large Ensemble Instrument 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Orch. Instrument"
+  },
+  {
+    "oid": "ATR000002ollAL",
+    "academicTrackName": "Music - Guitar 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Guitar"
+  },
+  {
+    "oid": "ATR000002ollfq",
+    "academicTrackName": "Music - Organ 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Organ"
+  },
+  {
+    "oid": "ATR000002ollKq",
+    "academicTrackName": "Music - Vocal 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Vocal"
+  },
+  {
+    "oid": "ATR000002ollVL",
+    "academicTrackName": "Music - Sing/Song 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Music - Sing/Song"
+  },
+  {
+    "oid": "ATR000002olRsQ",
+    "academicTrackName": "Creative Writing 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Creative Writing"
+  },
+  {
+    "oid": "ATR000002olSqD",
+    "academicTrackName": "Dance 2018",
+    "maxCredit": 12,
+    "minCredit": 2.5,
+    "type": "Dance"
+  }
+]
