@@ -1,5 +1,3 @@
-import {AcademicTrackSelection} from './AcademicTrackSelection';
-
 export class AcademicTrackCourseSelection {
   oid: string;
   courseDescription: string;
