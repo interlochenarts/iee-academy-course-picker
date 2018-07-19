@@ -21,20 +21,30 @@ export class CourseDataService {
     this.http.get('assets/json/academicTracks.json').subscribe((trackData: Array<AcademicTrack>) => {
       const tracks: Array<AcademicTrack> = trackData.map(at => AcademicTrack.createFromJson(at));
 
-      this.http.get('assets/json/academicTrackSelections.json').subscribe((selectionData: Array<Object>) => {
+      this.http.get('assets/json/academicTrackSelections.json').subscribe((selectionData: Array<AcademicTrackSelection>) => {
         const selections: Array<AcademicTrackSelection> = selectionData.map(sel => AcademicTrackSelection.createFromJson(sel));
 
-        this.http.get('assets/json/academicTrackCourseSelections.json').subscribe((courseSelectionData: Array<Object>) => {
-          courseSelectionData.map(cs => {
-            const trackCourseSelection: AcademicTrackCourseSelection = AcademicTrackCourseSelection.createFromJson(cs);
-            selections.find(s => s.oid === trackCourseSelection.academicTrackSelectionOid).addCourseSelection(trackCourseSelection);
-            return trackCourseSelection;
-          });
+        this.http.get('assets/json/academicTrackCourseSelections.json')
+          .subscribe((courseSelectionData: Array<AcademicTrackCourseSelection>) => {
+            courseSelectionData.sort((a, b) => {
+              if (a.courseNumber < b.courseNumber) {
+                return -1;
+              }
+              if (a.courseNumber > b.courseNumber) {
+                return 1;
+              }
+              return 0;
+            });
+            courseSelectionData.map(cs => {
+              const trackCourseSelection: AcademicTrackCourseSelection = AcademicTrackCourseSelection.createFromJson(cs);
+              selections.find(s => s.oid === trackCourseSelection.academicTrackSelectionOid).addCourseSelection(trackCourseSelection);
+              return trackCourseSelection;
+            });
 
-          selections.forEach((academicTrackSelection: AcademicTrackSelection) => {
-            tracks.find(t => t.oid === academicTrackSelection.academicTrackOid).addSelection(academicTrackSelection);
+            selections.forEach((academicTrackSelection: AcademicTrackSelection) => {
+              tracks.find(t => t.oid === academicTrackSelection.academicTrackOid).addSelection(academicTrackSelection);
+            });
           });
-        });
 
       });
 

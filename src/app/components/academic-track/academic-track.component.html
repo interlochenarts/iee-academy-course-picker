@@ -12,10 +12,18 @@
   <ul>
     <li *ngFor="let course of selection.academicTrackCourseSelections">
       <label>
-        <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isSelected"
-               [disabled]="!course.isSelected && (selection.selectedCount >= selection.maxSelections)">
-        {{course.courseNumber}} - {{course.courseDescription}}
+        <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isPrimarySelection"
+               [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">
+        Primary
       </label>
+      |
+      <label>
+        <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isAlternateSelection"
+               [disabled]="course.isPrimarySelection">
+        Alternate
+      </label>
+      |
+      {{course.courseNumber}} - {{course.courseDescription}}
     </li>
   </ul>
 </div>

@@ -24,6 +24,8 @@ export class AcademicTrackSelection {
   }
 
   get selectedCount(): number {
-    return this.academicTrackCourseSelections.reduce((accumulator, selection) => selection.isSelected ? accumulator + 1 : accumulator, 0);
+    return this.academicTrackCourseSelections.reduce(
+      (accumulator, selection) => selection.isPrimarySelection ? accumulator + 1 : accumulator, 0
+    );
   }
 }
