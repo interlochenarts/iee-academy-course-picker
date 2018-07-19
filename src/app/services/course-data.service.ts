@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
-import {AcademicTrack} from '../_classes/AcademicTrack';
-import {AcademicTrackSelection} from '../_classes/AcademicTrackSelection';
-import {AcademicTrackCourseSelection} from '../_classes/AcademicTrackCourseSelection';
+import {AcademicTrack} from '../classes/AcademicTrack';
+import {AcademicTrackSelection} from '../classes/AcademicTrackSelection';
+import {AcademicTrackCourseSelection} from '../classes/AcademicTrackCourseSelection';
 
 @Injectable({
   providedIn: 'root'

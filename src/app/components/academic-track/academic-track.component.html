@@ -1,0 +1,21 @@
+<div>
+  <button *ngFor="let grade of gradeLevels" (click)="onChangeGrade(grade)" type="button">{{grade}}</button>
+</div>
+
+<div *ngFor="let selection of displayedTrackSelections" class="track-selection">
+  <h1>{{selection.selectionName}}</h1>
+  <h3>{{selection.gradeLevel}}</h3>
+  <p [innerHtml]="selection.instructions"></p>
+  <p>Selections Required: {{selection.minSelections}}<br>
+    Maximum selections: {{selection.maxSelections}}<br>
+    Total Selected: {{selection.selectedCount}}</p>
+  <ul>
+    <li *ngFor="let course of selection.academicTrackCourseSelections">
+      <label>
+        <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isSelected"
+               [disabled]="!course.isSelected && (selection.selectedCount >= selection.maxSelections)">
+        {{course.courseNumber}} - {{course.courseDescription}}
+      </label>
+    </li>
+  </ul>
+</div>

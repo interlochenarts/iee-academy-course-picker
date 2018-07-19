@@ -22,4 +22,8 @@ export class AcademicTrackSelection {
   addCourseSelection(courseSelection: AcademicTrackCourseSelection): void {
     this.academicTrackCourseSelections.push(courseSelection);
   }
+
+  get selectedCount(): number {
+    return this.academicTrackCourseSelections.reduce((accumulator, selection) => selection.isSelected ? accumulator + 1 : accumulator, 0);
+  }
 }

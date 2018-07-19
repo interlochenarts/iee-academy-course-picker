@@ -8,6 +8,7 @@ export class AcademicTrackCourseSelection {
   sequenceNumber: number;
   gradeLevel: number;
   academicTrackSelectionOid: string;
+  isSelected = false;
 
   public static createFromJson(json: any): AcademicTrackCourseSelection {
     const academicTrackCourseSelection = new AcademicTrackCourseSelection();
