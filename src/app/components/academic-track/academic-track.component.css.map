@@ -1,1 +1,1 @@
-{"version":3,"sources":["academic-track.component.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,iBAAA;EACA,WAAA;;AAHF,gBAKE;EACE,gBAAA;EACA,SAAA;EACA,UAAA;;AARJ,gBAKE,GAKE;EACE,UAAA;EACA,SAAA;EACA,gBAAA","file":"academic-track.component.css"}
+{"version":3,"sources":["academic-track.component.less"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,iBAAA;EACA,WAAA;;AAHF,gBAKE;EACE,gBAAA;EACA,SAAA;EACA,UAAA;;AARJ,gBAKE,GAKE;EACE,UAAA;EACA,SAAA;EACA,gBAAA;;AAKN;EACE,kBAAA","file":"academic-track.component.css"}

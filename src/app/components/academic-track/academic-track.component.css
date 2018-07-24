@@ -13,4 +13,7 @@
   margin: 0;
   list-style: none;
 }
+.satisfied {
+  color: springgreen;
+}
 /*# sourceMappingURL=academic-track.component.css.map */
