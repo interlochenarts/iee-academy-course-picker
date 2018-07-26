@@ -24,7 +24,7 @@ export class CourseDataService {
       this.http.get('assets/json/academicTrackSelections.json').subscribe((selectionData: Array<AcademicTrackSelection>) => {
         const selections: Array<AcademicTrackSelection> = selectionData.map(sel => AcademicTrackSelection.createFromJson(sel));
 
-        this.http.get('assets/json/academicTrackCourseSelections.json')
+        this.http.get('assets/json/courseSelections.json')
           .subscribe((courseSelectionData: Array<AcademicTrackCourseSelection>) => {
             courseSelectionData.sort((a, b) => {
               if (a.courseNumber < b.courseNumber) {
