@@ -13,7 +13,7 @@
     Maximum selections: {{selection.maxSelections}}<br>
     Total Selected: {{selection.selectedCount}}</p>
   <ul>
-    <li *ngFor="let course of selection.academicTrackCourseSelections">
+    <li *ngFor="let course of selection.courseSelections">
       <label>
         <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isPrimarySelection"
                [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">

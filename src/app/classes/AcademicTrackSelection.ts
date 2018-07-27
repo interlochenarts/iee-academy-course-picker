@@ -11,7 +11,7 @@ export class AcademicTrackSelection {
   instructions: string;
   gradeLevel: number;
   academicTrackOid: string;
-  academicTrackCourseSelections: Array<AcademicTrackCourseSelection> = [];
+  courseSelections: Array<AcademicTrackCourseSelection> = [];
 
   public static createFromJson(json: any): AcademicTrackSelection {
     const academicTrackSelection = new AcademicTrackSelection();
@@ -20,11 +20,11 @@ export class AcademicTrackSelection {
   }
 
   addCourseSelection(courseSelection: AcademicTrackCourseSelection): void {
-    this.academicTrackCourseSelections.push(courseSelection);
+    this.courseSelections.push(courseSelection);
   }
 
   get selectedCount(): number {
-    return this.academicTrackCourseSelections.reduce(
+    return this.courseSelections.reduce(
       (accumulator, selection) => selection.isPrimarySelection ? accumulator + 1 : accumulator, 0
     );
   }
