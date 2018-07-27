@@ -30,6 +30,6 @@ export class AcademicTrackComponent implements OnInit {
   }
 
   onChangeGrade(gradeLevel: number) {
-    this.displayedTrackSelections = this.academicTrack.selections.filter(s => s.gradeLevel === gradeLevel);
+    this.displayedTrackSelections = this.academicTrack.trackSelections.filter(s => s.gradeLevel === gradeLevel);
   }
 }

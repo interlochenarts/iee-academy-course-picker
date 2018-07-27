@@ -6,7 +6,7 @@ export class AcademicTrack {
   maxCredit: number;
   minCredit: number;
   type: string;
-  selections: Array<AcademicTrackSelection> = [];
+  trackSelections: Array<AcademicTrackSelection> = [];
 
   public static createFromJson(json: any): AcademicTrack {
     const academicTrack = new AcademicTrack();
@@ -15,6 +15,6 @@ export class AcademicTrack {
   }
 
   addSelection(selection: AcademicTrackSelection): void {
-    this.selections.push(selection);
+    this.trackSelections.push(selection);
   }
 }
