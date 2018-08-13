@@ -19,12 +19,11 @@
                [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">
         Primary
       </label>
-      <label>
+      <label *ngIf="selection.allowAlternates">
         <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isAlternateSelection"
                [disabled]="course.isPrimarySelection">
-        Alternate
+        Alternate |
       </label>
-      |
       {{course.courseNumber}} - {{course.courseDescription}}
     </li>
   </ul>

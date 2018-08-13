@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/Salesforce
 
 # dependencies
 /node_modules
