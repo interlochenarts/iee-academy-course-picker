@@ -19,6 +19,14 @@ export class AcademicTrackSelection {
     return academicTrackSelection;
   }
 
+  public static createFromNestedJson(json: any): AcademicTrackSelection {
+    const academicTrackSelection = new AcademicTrackSelection();
+    Object.assign(academicTrackSelection, json);
+    academicTrackSelection.courseSelections =
+      json.courseSelections.map(c => AcademicTrackCourseSelection.createFromJson(c));
+    return academicTrackSelection;
+  }
+
   addCourseSelection(courseSelection: AcademicTrackCourseSelection): void {
     this.courseSelections.push(courseSelection);
   }

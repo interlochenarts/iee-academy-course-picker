@@ -1,7 +1,3 @@
-<div>
-  <button *ngFor="let grade of gradeLevels" (click)="onChangeGrade(grade)" type="button">{{grade}}</button>
-</div>
-
 <fieldset *ngFor="let selection of displayedTrackSelections" class="track-selection">
   <legend>
     <i *ngIf="selection.selectedCount >= selection.minSelections" class="fa fa-check-circle satisfied"></i>

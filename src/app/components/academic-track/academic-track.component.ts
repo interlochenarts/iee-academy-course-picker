@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {AcademicTrack} from '../../classes/AcademicTrack';
 import {CourseDataService} from '../../services/course-data.service';
 import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
+import {combineLatest} from 'rxjs';
 
 @Component({
   selector: 'app-academic-track',
@@ -12,24 +13,29 @@ import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
 export class AcademicTrackComponent implements OnInit {
   displayedTrackSelections: Array<AcademicTrackSelection> = [];
   academicTrack: AcademicTrack = new AcademicTrack();
-  gradeLevels = ['09', '10', '11', '12', '13'];
+  gradeLevel: number;
+  majorId: string;
 
   constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
-    this.courseDataService.getDataFromFiles();
-    this.courseDataService.academicTracks.asObservable().subscribe(
-      tracks => {
-        if (tracks) {
-          this.activatedRoute.paramMap.subscribe((pm: ParamMap) => {
-            this.academicTrack = tracks.find(t => t.oid === pm.get('academicTrackOid'));
-          });
-        }
-      });
-  }
+    this.activatedRoute.paramMap.subscribe(p => {
+      const educationId = p.get('educationId');
+      this.courseDataService.getMajorIdAndGrade(educationId);
+    });
 
-  onChangeGrade(gradeLevel: number) {
-    this.displayedTrackSelections = this.academicTrack.trackSelections.filter(s => s.gradeLevel === gradeLevel);
+    const majIdObs = this.courseDataService.majorId.asObservable();
+    const gradeObs = this.courseDataService.grade.asObservable();
+
+    combineLatest(majIdObs, gradeObs).subscribe(o => {
+      [this.majorId, this.gradeLevel] = o;
+
+      this.courseDataService.getData(this.majorId, this.gradeLevel);
+    });
+
+    this.courseDataService.academicTrackForMajor.asObservable().subscribe(at => {
+      this.academicTrack = at;
+    });
   }
 }

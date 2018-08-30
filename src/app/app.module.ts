@@ -6,19 +6,16 @@ import {AppComponent} from './app.component';
 import {CourseDataService} from './services/course-data.service';
 import {RouterModule, Routes} from '@angular/router';
 import {AcademicTrackComponent} from './components/academic-track/academic-track.component';
-import {AcademicTrackListComponent} from './components/academic-track-list/academic-track-list.component';
 import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
-  {path: '', component: AcademicTrackListComponent},
-  {path: ':academicTrackOid', component: AcademicTrackComponent}
+  {path: ':educationId', component: AcademicTrackComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AcademicTrackComponent,
-    AcademicTrackListComponent
+    AcademicTrackComponent
   ],
   imports: [
     BrowserModule,
