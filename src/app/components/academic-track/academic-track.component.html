@@ -1,4 +1,4 @@
-<fieldset *ngFor="let selection of displayedTrackSelections" class="track-selection">
+<fieldset *ngFor="let selection of academicTrack.trackSelections" class="track-selection">
   <legend>
     <i *ngIf="selection.selectedCount >= selection.minSelections" class="fa fa-check-circle satisfied"></i>
     {{selection.selectionName}}

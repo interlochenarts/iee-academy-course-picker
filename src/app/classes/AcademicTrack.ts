@@ -8,20 +8,10 @@ export class AcademicTrack {
   type: string;
   trackSelections: Array<AcademicTrackSelection> = [];
 
-  public static createFromJson(json: any): AcademicTrack {
-    const academicTrack = new AcademicTrack();
-    Object.assign(academicTrack, json);
-    return academicTrack;
-  }
-
   public static createFromNestedJson(json: any): AcademicTrack {
     const academicTrack = new AcademicTrack();
     Object.assign(academicTrack, json);
     academicTrack.trackSelections = json.trackSelections.map(ts => AcademicTrackSelection.createFromNestedJson(ts));
     return academicTrack;
-  }
-
-  addSelection(selection: AcademicTrackSelection): void {
-    this.trackSelections.push(selection);
   }
 }
