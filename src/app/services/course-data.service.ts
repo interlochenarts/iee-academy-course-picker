@@ -8,20 +8,21 @@ declare const Visualforce: any;
   providedIn: 'root'
 })
 export class CourseDataService {
-  public academicTrackForGradeAndMajor: BehaviorSubject<AcademicTrack> = new BehaviorSubject<AcademicTrack>(null);
+  public academicTrackFromEducationRecord: BehaviorSubject<AcademicTrack> = new BehaviorSubject<AcademicTrack>(null);
 
   constructor() {
   }
 
   public getData(educationId: string): void {
+    console.log('educationId: ' + educationId);
     if (educationId) {
       Visualforce.remoting.Manager.invokeAction(
-        'IEE_AcademyCourseRequestController.getAcademicTrackByMajorIdAndGrade',
+        'IEE_AcademyCourseRequestController.getAcademicTrackByEducationId',
         educationId,
         json => {
           if (json !== null) {
             // build academic tracks
-            this.academicTrackForGradeAndMajor.next(AcademicTrack.createFromNestedJson(json));
+            this.academicTrackFromEducationRecord.next(AcademicTrack.createFromNestedJson(json));
           }
         },
         {buffer: false, escape: false}

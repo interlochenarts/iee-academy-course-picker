@@ -22,8 +22,10 @@ export class AcademicTrackComponent implements OnInit {
       }
     });
 
-    this.courseDataService.academicTrackForGradeAndMajor.asObservable().subscribe(at => {
-      this.academicTrack = at;
+    this.courseDataService.academicTrackFromEducationRecord.asObservable().subscribe(at => {
+      if (at) {
+        this.academicTrack = at;
+      }
     });
   }
 }
