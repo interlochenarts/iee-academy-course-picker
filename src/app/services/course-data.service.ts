@@ -21,8 +21,10 @@ export class CourseDataService {
         educationId,
         json => {
           if (json !== null) {
+            const j = JSON.parse(json);
             // build academic tracks
-            this.academicTrackFromEducationRecord.next(AcademicTrack.createFromNestedJson(json));
+            console.log(j);
+            this.academicTrackFromEducationRecord.next(AcademicTrack.createFromNestedJson(j));
           }
         },
         {buffer: false, escape: false}
