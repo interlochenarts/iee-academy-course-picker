@@ -14,7 +14,6 @@ export class CourseDataService {
   }
 
   public getData(educationId: string): void {
-    console.log('educationId: ' + educationId);
     if (educationId) {
       Visualforce.remoting.Manager.invokeAction(
         'IEE_AcademyCourseRequestController.getAcademicTrackByEducationId',
@@ -23,7 +22,6 @@ export class CourseDataService {
           if (json !== null) {
             const j = JSON.parse(json);
             // build academic tracks
-            console.log(j);
             this.academicTrackFromEducationRecord.next(AcademicTrack.createFromNestedJson(j));
           }
         },

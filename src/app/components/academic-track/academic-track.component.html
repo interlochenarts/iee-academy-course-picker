@@ -12,11 +12,13 @@
     <li *ngFor="let course of selection.courseSelections">
       <label>
         <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isPrimarySelection"
+               (ngModelChange)="onClickCheckbox($event, course)"
                [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">
         Primary
       </label>
       <label *ngIf="selection.allowAlternates">
         <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isAlternateSelection"
+               (ngModelChange)="onClickCheckbox($event, course)"
                [disabled]="course.isPrimarySelection">
         Alternate |
       </label>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AcademicTrack} from '../../classes/AcademicTrack';
 import {CourseDataService} from '../../services/course-data.service';
+import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSelection';
 
 @Component({
   selector: 'app-academic-track',
@@ -10,15 +11,16 @@ import {CourseDataService} from '../../services/course-data.service';
 })
 export class AcademicTrackComponent implements OnInit {
   academicTrack: AcademicTrack = new AcademicTrack();
+  educationId: string;
 
   constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(p => {
-      const educationId = p.get('educationId');
-      if (educationId) {
-        this.courseDataService.getData(educationId);
+      this.educationId = p.get('educationId');
+      if (this.educationId) {
+        this.courseDataService.getData(this.educationId);
       }
     });
 
@@ -27,5 +29,9 @@ export class AcademicTrackComponent implements OnInit {
         this.academicTrack = at;
       }
     });
+  }
+
+  onClickCheckbox($event: Event, course: AcademicTrackCourseSelection): void {
+    course.addOrRemoveRequest(this.educationId);
   }
 }
