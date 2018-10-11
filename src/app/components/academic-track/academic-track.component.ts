@@ -12,6 +12,8 @@ import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSel
 export class AcademicTrackComponent implements OnInit {
   academicTrack: AcademicTrack = new AcademicTrack();
   educationId: string;
+  selectedTerm: string;
+  terms: Array<string>;
 
   constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
   }
@@ -27,8 +29,14 @@ export class AcademicTrackComponent implements OnInit {
     this.courseDataService.academicTrackFromEducationRecord.asObservable().subscribe(at => {
       if (at) {
         this.academicTrack = at;
+        this.terms = Array.from(at.trackSelectionsBySemester.keys()).sort();
+        this.selectedTerm = this.terms[0];
       }
     });
+  }
+
+  onChangeTerm(newTerm: string) {
+    this.selectedTerm = newTerm;
   }
 
   onClickCheckbox($event: Event, course: AcademicTrackCourseSelection): void {
