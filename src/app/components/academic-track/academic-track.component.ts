@@ -42,4 +42,7 @@ export class AcademicTrackComponent implements OnInit {
   onClickCheckbox($event: Event, course: AcademicTrackCourseSelection): void {
     course.addOrRemoveRequest(this.educationId);
   }
+
+  showDescriptionPopup(): void {
+  }
 }

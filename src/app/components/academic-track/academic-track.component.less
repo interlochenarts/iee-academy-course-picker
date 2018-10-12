@@ -17,6 +17,10 @@
   }
 }
 
+.nav {
+  margin-bottom: -1px;
+}
+
 .satisfied {
   color: springgreen;
 }
@@ -28,19 +32,8 @@
     margin: 0.5em;
   }
 
-  label {
-    margin: 0.5em;
-    padding: 0.5em;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-
+  .checkbox-container {
     background: #fff;
-
-    display: inline;
-
-    position: relative;
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -49,11 +42,16 @@
 
     border: 2px solid #a7e6fb;
 
-    overflow: hidden;
-
     transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
 
     cursor: pointer;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    margin: 0 0.5em;
+    padding: 0.5em;
 
     &:hover {
       background-color: #a7e6fb;
@@ -67,9 +65,24 @@
       cursor: not-allowed;
     }
 
-    input {
-      top: 3px;
-      position: relative;
+    .checkbox {
+      label {
+        i {
+          position: relative;
+          left: -20px;
+        }
+
+        &.disabled {
+          cursor: not-allowed;
+        }
+      }
     }
+  }
+
+  .detail-link {
+    position: relative;
+    top: 10px;
+    color: darkgray;
+    font-size: 1.3em;
   }
 }

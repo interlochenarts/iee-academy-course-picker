@@ -7,31 +7,57 @@
   </li>
 </ul>
 <div class="well">
-  <fieldset *ngFor="let selection of academicTrack.trackSelectionsBySemester.get(selectedTerm)" class="track-selection">
-    <legend>
-      <i *ngIf="selection.selectedCount >= selection.minSelections" class="fa fa-check-circle satisfied"></i>
-      {{selection.selectionName.split('-')[0].trim()}}
-    </legend>
-    <p [innerHtml]="selection.instructions"></p>
-    <p>Selections Required: {{selection.minSelections}}<br>
-      Maximum selections: {{selection.maxSelections}}<br>
-      Total Selected: {{selection.selectedCount}}</p>
-    <ul>
-      <li class="course-selection" *ngFor="let course of selection.courseSelections">
-        <label>
-          <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isPrimarySelection"
-                 (ngModelChange)="onClickCheckbox($event, course)"
-                 [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">
-          Primary
-        </label>
-        <label *ngIf="selection.allowAlternates">
-          <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isAlternateSelection"
-                 (ngModelChange)="onClickCheckbox($event, course)"
-                 [disabled]="course.isPrimarySelection">
-          Alternate
-        </label>
-        <span>{{course.courseNumber}} - {{course.courseDescription}}</span>
-      </li>
-    </ul>
-  </fieldset>
+  <div *ngFor="let selection of academicTrack.trackSelectionsBySemester.get(selectedTerm)" class="row">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>
+          {{selection.selectionName.split('-')[0].trim()}}
+          <i *ngIf="selection.selectedCount >= selection.minSelections" class="fa fa-check-circle satisfied"></i>
+        </h1>
+      </div>
+    </div>
+    <div class="track-selection row">
+      <div class="col-xs-12">
+        <p [innerHtml]="selection.instructions"></p>
+        <p>Selections Required: {{selection.minSelections}}<br>
+          Maximum selections: {{selection.maxSelections}}<br>
+          Total Selected: {{selection.selectedCount}}</p>
+      </div>
+      <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
+        <div class="checkbox-container col-xs-5">
+          <div class="checkbox col-xs-3">
+            <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isPrimarySelection"
+                   (ngModelChange)="onClickCheckbox($event, course)"
+                   [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">
+            <label [for]="course.oid">
+              <i class="fa fa-check"></i>
+            </label>
+          </div>
+          <div class="col-xs-9">
+            {{course.courseDescription}}
+          </div>
+        </div>
+        <div class="checkbox-container col-xs-5" *ngIf="selection.allowAlternates">
+          <div class="checkbox col-xs-3">
+            <input type="checkbox" [id]="course.oid + 'alternate'" [name]="course.oid + 'alternate'"
+                   [(ngModel)]="course.isAlternateSelection"
+                   (ngModelChange)="onClickCheckbox($event, course)"
+                   [disabled]="course.isPrimarySelection">
+            <label [for]="course.oid + 'alternate'">
+              <i class="fa fa-check"></i>
+            </label>
+          </div>
+          <div class="col-xs-9">
+            Alternate
+          </div>
+        </div>
+        <div class="col-xs-1 info">
+          <div class="text-center">
+            <a [title]="course.courseNumber" class="detail-link" href="javascript:void(0);" (click)="showDescriptionPopup()"><i
+              class="fa fa-info-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
