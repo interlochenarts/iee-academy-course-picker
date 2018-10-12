@@ -4,6 +4,7 @@ import {AcademicTrack} from '../../classes/AcademicTrack';
 import {CourseDataService} from '../../services/course-data.service';
 import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSelection';
 import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
+import {ModalService} from '../../services/modal.service';
 
 @Component({
   selector: 'app-academic-track',
@@ -16,7 +17,7 @@ export class AcademicTrackComponent implements OnInit {
   selectedTerm: string;
   terms: Array<string>;
 
-  constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
+  constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService, private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -51,7 +52,10 @@ export class AcademicTrackComponent implements OnInit {
     }
   }
 
-  showDescriptionPopup(): void {
+  showDescriptionPopup(course: AcademicTrackCourseSelection): void {
+    this.modalService.modalContent.next(course.courseDetail);
+    this.modalService.modalVisible.next(true);
+    this.modalService.modalTitle.next(course.courseDescription);
   }
 
   isPrimaryDisabled(course: AcademicTrackCourseSelection, selection: AcademicTrackSelection): boolean {

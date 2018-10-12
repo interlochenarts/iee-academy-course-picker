@@ -12,6 +12,7 @@ export class AcademicTrackCourseSelection {
   academicTrackSelectionOid: string;
   courseOfferingId: string;
   courseRequestId: string;
+  courseDetail: string;
 
   isPrimarySelection = false;
   isAlternateSelection = false;

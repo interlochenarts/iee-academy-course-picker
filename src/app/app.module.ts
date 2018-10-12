@@ -7,6 +7,8 @@ import {CourseDataService} from './services/course-data.service';
 import {RouterModule, Routes} from '@angular/router';
 import {AcademicTrackComponent} from './components/academic-track/academic-track.component';
 import {FormsModule} from '@angular/forms';
+import {ModalContainerComponent} from './modal-container/modal-container.component';
+import {ModalService} from './services/modal.service';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -15,7 +17,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AcademicTrackComponent
+    AcademicTrackComponent,
+    ModalContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true, paramsInheritanceStrategy: 'always'})
   ],
-  providers: [CourseDataService],
+  providers: [CourseDataService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
