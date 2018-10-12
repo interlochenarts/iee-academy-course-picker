@@ -24,26 +24,30 @@
           Total Selected: {{selection.selectedCount}}</p>
       </div>
       <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
-        <div class="checkbox-container col-xs-5">
+        <div class="checkbox-container col-xs-5"
+             (click)="onClickCheckbox(isPrimaryDisabled(course, selection), course, true)"
+             [ngClass]="{disabled: isPrimaryDisabled(course, selection)}">
           <div class="checkbox col-xs-3">
-            <input type="checkbox" [id]="course.oid" [name]="course.oid" [(ngModel)]="course.isPrimarySelection"
-                   (ngModelChange)="onClickCheckbox($event, course)"
-                   [disabled]="course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections)">
-            <label [for]="course.oid">
+            <input type="checkbox" [id]="course.oid" [name]="course.oid"
+                   [checked]="course.isPrimarySelection"
+                   [disabled]="isPrimaryDisabled(course, selection)">
+            <label [ngClass]="{disabled: isPrimaryDisabled(course, selection)}">
               <i class="fa fa-check"></i>
             </label>
           </div>
           <div class="col-xs-9">
-            {{course.courseDescription}}
+            {{course.courseDescription}}<br/>
+            {{course.courseNumber}}
           </div>
         </div>
-        <div class="checkbox-container col-xs-5" *ngIf="selection.allowAlternates">
+        <div class="checkbox-container col-xs-5" *ngIf="selection.allowAlternates"
+             (click)="onClickCheckbox(isAlternateDisabled(course), course, false)"
+             [ngClass]="{disabled: isAlternateDisabled(course)}">
           <div class="checkbox col-xs-3">
             <input type="checkbox" [id]="course.oid + 'alternate'" [name]="course.oid + 'alternate'"
-                   [(ngModel)]="course.isAlternateSelection"
-                   (ngModelChange)="onClickCheckbox($event, course)"
-                   [disabled]="course.isPrimarySelection">
-            <label [for]="course.oid + 'alternate'">
+                   [checked]="course.isAlternateSelection"
+                   [disabled]="isAlternateDisabled(course)">
+            <label [ngClass]="{disabled: isAlternateDisabled(course)}">
               <i class="fa fa-check"></i>
             </label>
           </div>
@@ -53,7 +57,8 @@
         </div>
         <div class="col-xs-1 info">
           <div class="text-center">
-            <a [title]="course.courseNumber" class="detail-link" href="javascript:void(0);" (click)="showDescriptionPopup()"><i
+            <a [title]="course.courseNumber" class="detail-link" href="javascript:void(0);"
+               (click)="showDescriptionPopup()"><i
               class="fa fa-info-circle"></i></a>
           </div>
         </div>

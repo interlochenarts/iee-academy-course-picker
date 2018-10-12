@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AcademicTrack} from '../../classes/AcademicTrack';
 import {CourseDataService} from '../../services/course-data.service';
 import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSelection';
+import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
 
 @Component({
   selector: 'app-academic-track',
@@ -39,10 +40,25 @@ export class AcademicTrackComponent implements OnInit {
     this.selectedTerm = newTerm;
   }
 
-  onClickCheckbox($event: Event, course: AcademicTrackCourseSelection): void {
-    course.addOrRemoveRequest(this.educationId);
+  onClickCheckbox(isDisabled: boolean, course: AcademicTrackCourseSelection, isPrimary: boolean): void {
+    if (!isDisabled) {
+      if (isPrimary) {
+        course.isPrimarySelection = !course.isPrimarySelection;
+      } else {
+        course.isAlternateSelection = !course.isAlternateSelection;
+      }
+      course.addOrRemoveRequest(this.educationId);
+    }
   }
 
   showDescriptionPopup(): void {
+  }
+
+  isPrimaryDisabled(course: AcademicTrackCourseSelection, selection: AcademicTrackSelection): boolean {
+    return course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections);
+  }
+
+  isAlternateDisabled(course: AcademicTrackCourseSelection): boolean {
+    return course.isPrimarySelection;
   }
 }
