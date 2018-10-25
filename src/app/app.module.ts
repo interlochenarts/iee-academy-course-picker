@@ -9,6 +9,7 @@ import {AcademicTrackComponent} from './components/academic-track/academic-track
 import {FormsModule} from '@angular/forms';
 import {ModalContainerComponent} from './modal-container/modal-container.component';
 import {ModalService} from './services/modal.service';
+import { TranscriptQuestionsComponent } from './transcript-questions/transcript-questions.component';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AcademicTrackComponent,
-    ModalContainerComponent
+    ModalContainerComponent,
+    TranscriptQuestionsComponent
   ],
   imports: [
     BrowserModule,

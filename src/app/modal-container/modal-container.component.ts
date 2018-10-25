@@ -22,7 +22,9 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
     this.modalBackdrop.nativeElement.style.height = viewHeight;
     this.modalBackdrop.nativeElement.style.width = viewWidth;
 
-    this.modalBox.nativeElement.style.top = viewHeight / 2;
+    this.modalBox.nativeElement.style.top = '75px';
+    this.modalBox.nativeElement.style.maxHeight = (viewHeight - 150) + 'px';
+    this.modalBox.nativeElement.style.overflow = 'auto';
 
     this.modalService.modalContent.asObservable().subscribe({
       next: text => {
@@ -33,7 +35,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
       next: title => {
         this.modalTitle = title;
       }
-    })
+    });
   }
 
   ngOnDestroy() {
