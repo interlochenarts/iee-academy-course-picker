@@ -3,8 +3,6 @@ import {AcademicTrackSelection} from './AcademicTrackSelection';
 export class AcademicTrack {
   oid: string;
   name: string;
-  maxCredit: number;
-  minCredit: number;
   type: string;
   trackSelections: Array<AcademicTrackSelection> = [];
   trackSelectionsBySemester: Map<string, Array<AcademicTrackSelection>> = new Map<string, Array<AcademicTrackSelection>>();

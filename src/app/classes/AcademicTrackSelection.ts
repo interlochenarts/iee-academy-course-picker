@@ -9,6 +9,7 @@ export class AcademicTrackSelection {
   allowAlternates: boolean;
   sequenceNumber: number;
   instructions: string;
+  semester: string;
   gradeLevel: number;
   academicTrackOid: string;
   courseSelections: Array<AcademicTrackCourseSelection> = [];
