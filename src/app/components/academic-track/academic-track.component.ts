@@ -5,11 +5,25 @@ import {CourseDataService} from '../../services/course-data.service';
 import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSelection';
 import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
 import {ModalService} from '../../services/modal.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-academic-track',
   templateUrl: './academic-track.component.html',
-  styleUrls: ['./academic-track.component.css']
+  styleUrls: ['./academic-track.component.css'],
+  animations: [
+    trigger('shrinkGrow', [
+      state('in', style({height: '*'})),
+      transition(':leave', [
+        style({height: '*'}),
+        animate('300ms 0ms ease-in', style({height: 0}))
+      ]),
+      transition('void => in', [
+        style({height: 0}),
+        animate('300ms 0ms ease-out', style({height: '*'}))
+      ])
+    ])
+  ]
 })
 export class AcademicTrackComponent implements OnInit {
   academicTrack: AcademicTrack = new AcademicTrack();
@@ -50,6 +64,10 @@ export class AcademicTrackComponent implements OnInit {
       }
       course.addOrRemoveRequest(this.educationId);
     }
+  }
+
+  onToggleTrackSelection(selection: AcademicTrackSelection) {
+    selection.expanded = !selection.expanded;
   }
 
   showDescriptionPopup(course: AcademicTrackCourseSelection): void {

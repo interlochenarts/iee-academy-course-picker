@@ -9,7 +9,8 @@ import {AcademicTrackComponent} from './components/academic-track/academic-track
 import {FormsModule} from '@angular/forms';
 import {ModalContainerComponent} from './modal-container/modal-container.component';
 import {ModalService} from './services/modal.service';
-import { TranscriptQuestionsComponent } from './transcript-questions/transcript-questions.component';
+import {TranscriptQuestionsComponent} from './transcript-questions/transcript-questions.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true, paramsInheritanceStrategy: 'always'})

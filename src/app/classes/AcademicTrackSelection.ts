@@ -14,6 +14,9 @@ export class AcademicTrackSelection {
   academicTrackOid: string;
   courseSelections: Array<AcademicTrackCourseSelection> = [];
 
+  // determines whether this selection is visible or not
+  expanded = false;
+
   public static createFromNestedJson(json: any): AcademicTrackSelection {
     const academicTrackSelection = new AcademicTrackSelection();
     Object.assign(academicTrackSelection, json);

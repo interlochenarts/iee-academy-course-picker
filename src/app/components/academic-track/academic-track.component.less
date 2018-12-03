@@ -1,12 +1,52 @@
-.track-selection, .track-name {
-  margin: 1em;
+.track-name {
+  transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
+  margin: 1em 1em 0 1em;
+  border: 1px solid gray;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+  background-color: #eee;
+  &:hover {
+    background-color: #ddd;
+  }
+
+  .track-grid-wrapper {
+    display:grid;
+    grid-gap: 10px;
+    grid-template-columns: 10% 40% 40% 10%;
+  }
+
+  .track-grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+
+    h1 {
+      font-size: 2.0em;
+    }
+  }
+
+  .track-grid-left {
+    justify-content: left;
+  }
 }
 
 .track-selection {
+  transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
+  overflow: hidden;
+  margin: 0 1em 1em 1em;
   border: 1px solid gray;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  border-top: 0;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
   padding: 10px 5px;
 
   ul {
@@ -26,6 +66,10 @@
 
 .satisfied {
   color: springgreen;
+}
+
+.not-satisfied {
+  color: darkred;
 }
 
 .course-selection {
