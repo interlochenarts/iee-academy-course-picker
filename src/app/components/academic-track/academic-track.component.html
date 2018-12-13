@@ -5,9 +5,13 @@
       [ngClass]="{active: term === selectedTerm}">
     <a href="javascript:void(0);" (click)="onChangeTerm(term)">{{term}}</a>
   </li>
+  <li role="presentation"
+      [ngClass]="{active: reviewAndSubmitSelected}">
+    <a href="javascript:void(0);" (click)="onSelectReviewAndSubmit()">Review & Submit</a>
+  </li>
 </ul>
 <div class="well">
-  <div *ngFor="let selection of academicTrack.trackSelectionsBySemester.get(selectedTerm)" class="row">
+  <div *ngIf="reviewAndSubmitSelected === false" *ngFor="let selection of academicTrack.trackSelectionsBySemester.get(selectedTerm)" class="row">
     <div class="track-name row" (click)="onToggleTrackSelection(selection)">
       <div class="col-xs-12 track-grid-wrapper">
         <div class="track-grid-item">
@@ -17,9 +21,7 @@
              class="fa fa-times-circle fa-3x not-satisfied"></i>
         </div>
         <div class="track-grid-item track-grid-left">
-          <h1>
-            {{selection.selectionName.split('-')[0].trim()}}
-          </h1>
+          <h1>{{selection.selectionName.split('-')[0].trim()}}</h1>
         </div>
         <div class="track-grid-item">
           Selections Required: {{selection.minSelections}}<br>
@@ -78,4 +80,5 @@
       </div>
     </div>
   </div>
+  <app-review-and-submit *ngIf="reviewAndSubmitSelected === true"></app-review-and-submit>
 </div>

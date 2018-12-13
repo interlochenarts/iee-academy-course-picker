@@ -11,6 +11,8 @@ import {ModalContainerComponent} from './modal-container/modal-container.compone
 import {ModalService} from './services/modal.service';
 import {TranscriptQuestionsComponent} from './transcript-questions/transcript-questions.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ReviewAndSubmitComponent } from './components/review-and-submit/review-and-submit.component';
+import { AlternatesComponent } from './components/alternates/alternates.component';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
     AppComponent,
     AcademicTrackComponent,
     ModalContainerComponent,
-    TranscriptQuestionsComponent
+    TranscriptQuestionsComponent,
+    ReviewAndSubmitComponent,
+    AlternatesComponent
   ],
   imports: [
     BrowserModule,

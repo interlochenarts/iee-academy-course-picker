@@ -29,6 +29,7 @@ export class AcademicTrackComponent implements OnInit {
   academicTrack: AcademicTrack = new AcademicTrack();
   educationId: string;
   selectedTerm: string;
+  reviewAndSubmitSelected = false;
   terms: Array<string>;
 
   constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService, private modalService: ModalService) {
@@ -53,6 +54,12 @@ export class AcademicTrackComponent implements OnInit {
 
   onChangeTerm(newTerm: string) {
     this.selectedTerm = newTerm;
+    this.reviewAndSubmitSelected = false;
+  }
+
+  onSelectReviewAndSubmit() {
+    this.selectedTerm = null;
+    this.reviewAndSubmitSelected = true;
   }
 
   onClickCheckbox(isDisabled: boolean, course: AcademicTrackCourseSelection, isPrimary: boolean): void {
