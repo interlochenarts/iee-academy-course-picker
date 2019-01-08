@@ -14,7 +14,8 @@
   </li>
 </ul>
 <div class="well">
-  <app-track-selections *ngIf="alternatesSelected === false && reviewAndSubmitSelected === false"></app-track-selections>
-  <app-alternates *ngIf="alternatesSelected === true"></app-alternates>
+  <app-track-selections *ngIf="alternatesSelected === false && reviewAndSubmitSelected === false"
+                        [educationId]="educationId"></app-track-selections>
+  <app-alternates *ngIf="alternatesSelected === true" [educationId]="educationId" [trackSelectionsWithAlts]=""></app-alternates>
   <app-review-and-submit *ngIf="reviewAndSubmitSelected === true"></app-review-and-submit>
 </div>

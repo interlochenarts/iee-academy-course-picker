@@ -27,6 +27,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class AcademicTrackComponent implements OnInit {
   academicTrack: AcademicTrack = new AcademicTrack();
+  trackSelectionsWithAlternates: AcademicTrackSelection[] = [];
   educationId: string;
   selectedTerm: string;
   reviewAndSubmitSelected = false;
@@ -34,7 +35,7 @@ export class AcademicTrackComponent implements OnInit {
   alternatesAvailable: boolean;
   terms: Array<string>;
 
-  constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService, private modalService: ModalService) {
+  constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
@@ -48,6 +49,7 @@ export class AcademicTrackComponent implements OnInit {
     this.courseDataService.academicTrackFromEducationRecord.asObservable().subscribe(at => {
       if (at) {
         this.academicTrack = at;
+        this.trackSelectionsWithAlternates = this.academicTrack.trackSelections.filter(ats => ats.allowAlternates === true);
         this.terms = Array.from(at.trackSelectionsBySemester.keys()).sort();
         this.selectedTerm = this.terms[0];
       }
@@ -70,34 +72,5 @@ export class AcademicTrackComponent implements OnInit {
     this.alternatesSelected = true;
     this.reviewAndSubmitSelected = false;
     this.selectedTerm = null;
-  }
-
-  onClickCheckbox(isDisabled: boolean, course: AcademicTrackCourseSelection, isPrimary: boolean): void {
-    if (!isDisabled) {
-      if (isPrimary) {
-        course.isPrimarySelection = !course.isPrimarySelection;
-      } else {
-        course.isAlternateSelection = !course.isAlternateSelection;
-      }
-      course.addOrRemoveRequest(this.educationId);
-    }
-  }
-
-  onToggleTrackSelection(selection: AcademicTrackSelection) {
-    selection.expanded = !selection.expanded;
-  }
-
-  showDescriptionPopup(course: AcademicTrackCourseSelection): void {
-    this.modalService.modalContent.next(course.courseDetail);
-    this.modalService.modalVisible.next(true);
-    this.modalService.modalTitle.next(course.courseDescription);
-  }
-
-  isPrimaryDisabled(course: AcademicTrackCourseSelection, selection: AcademicTrackSelection): boolean {
-    return course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections);
-  }
-
-  isAlternateDisabled(course: AcademicTrackCourseSelection): boolean {
-    return course.isPrimarySelection;
   }
 }

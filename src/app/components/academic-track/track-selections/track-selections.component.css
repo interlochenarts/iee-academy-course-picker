@@ -1,0 +1,108 @@
+.track-name {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
+  margin: 1em 1em 0 1em;
+  border: 1px solid gray;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  background-color: #eee;
+}
+.track-name:hover {
+  background-color: #ddd;
+}
+.track-name .track-grid-wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 10% 40% 40% 10%;
+}
+.track-name .track-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+.track-name .track-grid-item h1 {
+  font-size: 2.0em;
+}
+.track-name .track-grid-left {
+  justify-content: left;
+}
+.track-selection {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
+  overflow: hidden;
+  margin: 0 1em 1em 1em;
+  border: 1px solid gray;
+  border-top: 0;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  padding: 10px 5px;
+}
+.track-selection ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.track-selection ul li {
+  list-style: none;
+}
+.nav {
+  margin-bottom: -1px;
+}
+.satisfied {
+  color: springgreen;
+}
+.not-satisfied {
+  color: darkred;
+}
+.course-selection {
+  margin: 1.0em;
+}
+.course-selection span {
+  margin: 0.5em;
+}
+.course-selection .checkbox-container {
+  background: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 2px solid #a7e6fb;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0 0.5em;
+  padding: 0.5em;
+}
+.course-selection .checkbox-container:hover {
+  background-color: #a7e6fb;
+  border-color: #3cc7f6;
+}
+.course-selection .checkbox-container.disabled,
+.course-selection .checkbox-container.disabled:hover {
+  background: #ddd;
+  color: #aaa;
+  border-color: #bbb;
+  cursor: not-allowed;
+}
+.course-selection .checkbox-container .checkbox label i {
+  position: relative;
+  left: -20px;
+}
+.course-selection .checkbox-container .checkbox label.disabled {
+  cursor: not-allowed;
+}
+.course-selection .detail-link {
+  position: relative;
+  top: 10px;
+  color: darkgray;
+  font-size: 1.3em;
+}
+/*# sourceMappingURL=track-selections.component.css.map */
