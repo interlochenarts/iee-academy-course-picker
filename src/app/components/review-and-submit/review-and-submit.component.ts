@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-review-and-submit',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review-and-submit.component.css']
 })
 export class ReviewAndSubmitComponent implements OnInit {
+  @Input() educationId: string;
 
   constructor() { }
 

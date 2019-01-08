@@ -32,14 +32,9 @@ export class TrackSelectionsComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  onClickCheckbox(isDisabled: boolean, course: AcademicTrackCourseSelection, isPrimary: boolean): void {
+  onClickCheckbox(isDisabled: boolean, course: AcademicTrackCourseSelection): void {
     if (!isDisabled) {
-      if (isPrimary) {
-        course.isPrimarySelection = !course.isPrimarySelection;
-      } else {
-        course.isAlternateSelection = !course.isAlternateSelection;
-      }
+      course.isPrimarySelection = !course.isPrimarySelection;
       course.addOrRemoveRequest(this.educationId);
     }
   }
@@ -54,11 +49,7 @@ export class TrackSelectionsComponent implements OnInit {
     this.modalService.modalTitle.next(course.courseDescription);
   }
 
-  isPrimaryDisabled(course: AcademicTrackCourseSelection, selection: AcademicTrackSelection): boolean {
+  isDisabled(course: AcademicTrackCourseSelection, selection: AcademicTrackSelection): boolean {
     return course.isAlternateSelection || !course.isPrimarySelection && (selection.selectedCount >= selection.maxSelections);
-  }
-
-  isAlternateDisabled(course: AcademicTrackCourseSelection): boolean {
-    return course.isPrimarySelection;
   }
 }
