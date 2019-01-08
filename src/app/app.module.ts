@@ -11,8 +11,9 @@ import {ModalContainerComponent} from './modal-container/modal-container.compone
 import {ModalService} from './services/modal.service';
 import {TranscriptQuestionsComponent} from './transcript-questions/transcript-questions.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ReviewAndSubmitComponent } from './components/review-and-submit/review-and-submit.component';
-import { AlternatesComponent } from './components/alternates/alternates.component';
+import {ReviewAndSubmitComponent} from './components/review-and-submit/review-and-submit.component';
+import {AlternatesComponent} from './components/academic-track/alternates/alternates.component';
+import {TrackSelectionsComponent} from './components/academic-track/track-selections/track-selections.component';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     ModalContainerComponent,
     TranscriptQuestionsComponent,
     ReviewAndSubmitComponent,
-    AlternatesComponent
+    AlternatesComponent,
+    TrackSelectionsComponent
   ],
   imports: [
     BrowserModule,
