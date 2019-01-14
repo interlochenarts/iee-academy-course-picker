@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AcademicTrackCourseSelection} from '../../../classes/AcademicTrackCourseSelection';
 import {AcademicTrackSelection} from '../../../classes/AcademicTrackSelection';
-import {CourseDataService} from '../../../services/course-data.service';
 import {ModalService} from '../../../services/modal.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
@@ -25,6 +24,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class TrackSelectionsComponent implements OnInit {
   @Input() educationId: string;
+  @Input() trackSelections: AcademicTrackSelection[];
 
   constructor(private modalService: ModalService) {
   }

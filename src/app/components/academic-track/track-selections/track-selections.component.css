@@ -55,10 +55,10 @@
   margin-bottom: -1px;
 }
 .satisfied {
-  color: springgreen;
+  color: #91bb3e;
 }
 .not-satisfied {
-  color: darkred;
+  color: #d42741;
 }
 .course-selection {
   margin: 1.0em;

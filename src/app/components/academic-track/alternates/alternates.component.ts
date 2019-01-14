@@ -39,6 +39,10 @@ export class AlternatesComponent implements OnInit {
     }
   }
 
+  onToggleTrackSelection(selection: AcademicTrackSelection) {
+    selection.expanded = !selection.expanded;
+  }
+
   showDescriptionPopup(course: AcademicTrackCourseSelection): void {
     this.modalService.modalContent.next(course.courseDetail);
     this.modalService.modalVisible.next(true);

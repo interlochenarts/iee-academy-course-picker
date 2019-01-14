@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AcademicTrack} from '../../classes/AcademicTrack';
 import {CourseDataService} from '../../services/course-data.service';
-import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSelection';
 import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
-import {ModalService} from '../../services/modal.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -50,6 +48,7 @@ export class AcademicTrackComponent implements OnInit {
       if (at) {
         this.academicTrack = at;
         this.trackSelectionsWithAlternates = this.academicTrack.trackSelections.filter(ats => ats.allowAlternates === true);
+        this.alternatesAvailable = this.trackSelectionsWithAlternates.length > 0;
         this.terms = Array.from(at.trackSelectionsBySemester.keys()).sort();
         this.selectedTerm = this.terms[0];
       }

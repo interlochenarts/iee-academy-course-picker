@@ -1,4 +1,4 @@
-<div *ngFor="let selection of academicTrack.trackSelectionsBySemester.get(selectedTerm)" class="row">
+<div *ngFor="let selection of trackSelectionsWithAlts" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
     <div class="col-xs-12 track-grid-wrapper">
       <div class="track-grid-item track-grid-left">
@@ -15,11 +15,11 @@
       <p [innerHtml]="selection.instructions"></p>
     </div>
     <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
-      <div class="checkbox-container col-xs-11" *ngIf="selection.allowAlternates"
+      <div class="checkbox-container col-xs-10" *ngIf="selection.allowAlternates"
            (click)="onClickCheckbox(isDisabled(course), course)"
            [ngClass]="{disabled: isDisabled(course)}">
         <div class="checkbox col-xs-3">
-          <input type="checkbox" [id]="course.oid + 'alternate'" [name]="course.oid + 'alternate'"
+          <input type="checkbox" [id]="course.oid" [name]="course.oid"
                  [checked]="course.isAlternateSelection"
                  [disabled]="isDisabled(course)">
           <label [ngClass]="{disabled: isDisabled(course)}">
