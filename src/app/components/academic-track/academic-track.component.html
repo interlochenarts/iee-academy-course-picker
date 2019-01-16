@@ -21,5 +21,6 @@
                   [educationId]="educationId"
                   [trackSelectionsWithAlts]="trackSelectionsWithAlternates"></app-alternates>
   <app-review-and-submit *ngIf="reviewAndSubmitSelected === true"
-                         [educationId]="educationId"></app-review-and-submit>
+                         [educationId]="educationId"
+                         [trackSelectionsBySemester]="academicTrack.trackSelectionsBySemester"></app-review-and-submit>
 </div>

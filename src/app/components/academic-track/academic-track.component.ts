@@ -68,8 +68,8 @@ export class AcademicTrackComponent implements OnInit {
   }
 
   onSelectAlternates() {
-    this.alternatesSelected = true;
-    this.reviewAndSubmitSelected = false;
     this.selectedTerm = null;
+    this.reviewAndSubmitSelected = false;
+    this.alternatesSelected = true;
   }
 }

@@ -1,3 +1,23 @@
-<p>
-  review-and-submit works!
-</p>
+<div *ngFor="let sem of semesters">
+  <h2>{{sem}}</h2>
+
+  <h3>Primary Selections</h3>
+  <ul>
+    <li *ngFor="let course of selectedPrimaryCoursesBySemester.get(sem)">
+      {{course.courseDescription}}
+    </li>
+  </ul>
+
+  <h3>Alternate Selections</h3>
+  <ul>
+    <li *ngFor="let course of selectedAlternateCoursesBySemester.get(sem)">
+      {{course.courseDescription}}
+    </li>
+  </ul>
+</div>
+
+<div>
+  <p>Review text</p>
+  <input type="checkbox" id="submitCheck">
+  <label for="submitCheck">I agree</label>
+</div>
