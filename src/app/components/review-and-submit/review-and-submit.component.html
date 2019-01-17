@@ -1,23 +1,56 @@
-<div *ngFor="let sem of semesters">
-  <h2>{{sem}}</h2>
+<div class="row semester" *ngFor="let sem of semesters">
+  <div class="col-xs-12">
+    <h2>{{sem}}</h2>
 
-  <h3>Primary Selections</h3>
-  <ul>
-    <li *ngFor="let course of selectedPrimaryCoursesBySemester.get(sem)">
-      {{course.courseDescription}}
-    </li>
-  </ul>
+    <h4>Primary Selections</h4>
+    <div class="alert alert-danger"
+         *ngIf="selectedPrimaryCoursesBySemester.get(sem).length === 0">
+      <i class="fa fa-exclamation-triangle" style="color:red"></i> You have not selected any primary course requests for
+      this session.
+    </div>
+    <ul *ngIf="selectedPrimaryCoursesBySemester.get(sem).length > 0">
+      <li *ngFor="let course of selectedPrimaryCoursesBySemester.get(sem)">
+        {{course.courseDescription}}
+      </li>
+    </ul>
 
-  <h3>Alternate Selections</h3>
-  <ul>
-    <li *ngFor="let course of selectedAlternateCoursesBySemester.get(sem)">
-      {{course.courseDescription}}
-    </li>
-  </ul>
+    <div *ngIf="semesterHasAlternates.get(sem)">
+      <h4>Alternate Selections</h4>
+      <ul *ngIf="selectedAlternateCoursesBySemester.get(sem).length > 0">
+        <li *ngFor="let course of selectedAlternateCoursesBySemester.get(sem)">
+          {{course.courseDescription}}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div>
-  <p>Review text</p>
-  <input type="checkbox" id="submitCheck">
-  <label for="submitCheck">I agree</label>
+<div class="row check-description"
+     [ngClass]="{disabled: canClickCheckbox() === false, clickable: canClickCheckbox()}"
+     (click)="onClickCheckbox()">
+  <div class="col-xs-2 text-right">
+    <div class="checkbox">
+      <input type="checkbox" [checked]="readyToSubmit"/>
+      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check"></i></label>
+    </div>
+  </div>
+  <div class="col-xs-10">
+    <div class="no-select nudge-down">
+      I'm ready to submit my course requests.
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 info-text margin-top-sm">
+    Once you have submitted your course requests you won't be able to change this information.
+    While we do our best to honor course requests, we are not able to guarantee placement in any course.
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 text-right margin-top-sm">
+    <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="submitting === true"></i>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!readyToSubmit || submitting">
+      Submit
+    </button>
+  </div>
 </div>

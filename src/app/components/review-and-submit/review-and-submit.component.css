@@ -1,0 +1,42 @@
+.semester-name {
+  margin: 1em 1em 0 1em;
+  border: 1px solid gray;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.semester {
+  border: 1px solid #cccccc;
+  margin: 0.75em;
+  padding: 1em;
+}
+.semester p {
+  font-size: 1.2em;
+}
+.semester ul {
+  list-style: none;
+  padding: 0;
+}
+.semester ul li {
+  margin: 0;
+  padding: 0;
+}
+.choice {
+  border-top: 1px solid #cccccc;
+  padding: 1em;
+  margin: auto 0.5em;
+}
+.choice.first {
+  border-top: 0;
+}
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*# sourceMappingURL=review-and-submit.component.css.map */

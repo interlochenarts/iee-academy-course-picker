@@ -1,0 +1,16 @@
+.nav {
+  position: relative;
+  top: 1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.nav li {
+  cursor: pointer;
+}
+.nav li.active a {
+  border: 1px solid #ccc;
+  border-bottom-color: transparent;
+}
+/*# sourceMappingURL=academic-track.component.css.map */

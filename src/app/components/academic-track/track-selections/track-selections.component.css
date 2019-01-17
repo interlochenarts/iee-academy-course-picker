@@ -10,10 +10,10 @@
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  background-color: #eee;
+  background-color: #f0f0f0;
 }
 .track-name:hover {
-  background-color: #ddd;
+  background-color: #e0e0e0;
 }
 .track-name .track-grid-wrapper {
   display: grid;
