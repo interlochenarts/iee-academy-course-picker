@@ -16,6 +16,8 @@ export class AcademicTrackCourseSelection {
   isPrimarySelection = false;
   isAlternateSelection = false;
 
+  isUpdating = false;
+
   public static createFromJson(json: any): AcademicTrackCourseSelection {
     const academicTrackCourseSelection = new AcademicTrackCourseSelection();
     Object.assign(academicTrackCourseSelection, json);
@@ -25,6 +27,7 @@ export class AcademicTrackCourseSelection {
   public addOrRemoveRequest(educationId: string): void {
     const requestType: string = (this.isAlternateSelection ? 'Alternate' : (this.isPrimarySelection ? 'Primary' : 'none'));
     const deleteRequest: boolean = requestType === 'none';
+    this.isUpdating = true;
 
     Visualforce.remoting.Manager.invokeAction(
       'IEE_AcademyCourseRequestController.addOrRemoveCourseRequest',
@@ -34,6 +37,7 @@ export class AcademicTrackCourseSelection {
       deleteRequest,
       (savedId: string) => {
         this.courseRequestId = savedId;
+        this.isUpdating = false;
       },
       {buffer: false, escape: false}
     );

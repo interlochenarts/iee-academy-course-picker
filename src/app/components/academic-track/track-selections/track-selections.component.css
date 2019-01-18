@@ -54,9 +54,6 @@
 .track-selection ul li {
   list-style: none;
 }
-.nav {
-  margin-bottom: -1px;
-}
 .satisfied {
   color: #91bb3e;
 }
@@ -68,47 +65,5 @@
 }
 .course-selection span {
   margin: 0.5em;
-}
-.course-selection .checkbox-container {
-  background: #fff;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 2px solid #a7e6fb;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
-  cursor: pointer;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  margin: 0 0.5em;
-  padding: 0.5em;
-}
-.course-selection .checkbox-container:hover {
-  background-color: #a7e6fb;
-  border-color: #3cc7f6;
-}
-.course-selection .checkbox-container.disabled,
-.course-selection .checkbox-container.disabled:hover {
-  background: #ddd;
-  color: #aaa;
-  border-color: #bbb;
-  cursor: not-allowed;
-}
-.course-selection .checkbox-container .description {
-  margin: 10px 0;
-}
-.course-selection .checkbox-container .checkbox label i {
-  position: relative;
-  left: -20px;
-}
-.course-selection .checkbox-container .checkbox label.disabled {
-  cursor: not-allowed;
-}
-.course-selection .detail-link {
-  position: relative;
-  top: 10px;
-  color: darkgray;
-  font-size: 1.3em;
 }
 /*# sourceMappingURL=track-selections.component.css.map */

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
-import {AcademicTrackCourseSelection} from '../../classes/AcademicTrackCourseSelection';
+import {AcademicTrackSelection} from '../../../classes/AcademicTrackSelection';
+import {AcademicTrackCourseSelection} from '../../../classes/AcademicTrackCourseSelection';
 
 declare const Visualforce: any;
 

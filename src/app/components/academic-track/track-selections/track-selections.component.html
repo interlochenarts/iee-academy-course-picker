@@ -30,32 +30,10 @@
       <p [innerHtml]="selection.instructions"></p>
     </div>
     <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
-      <div class="checkbox-container col-xs-9 col-md-10"
-           (click)="onClickCheckbox(isDisabled(course, selection), course)"
-           [ngClass]="{disabled: isDisabled(course, selection)}">
-        <div class="checkbox col-xs-3 col-md-2">
-          <input type="checkbox" [id]="course.courseNumber" [name]="course.courseNumber"
-                 [checked]="course.isPrimarySelection"
-                 [disabled]="isDisabled(course, selection)">
-          <label [ngClass]="{disabled: isDisabled(course, selection)}">
-            <i class="fa fa-check"></i>
-          </label>
-        </div>
-        <div class="col-xs-9 col-md-8 description">
-          <h3>{{course.courseDescription}}</h3>
-        </div>
-        <div class="col-xs-12 col-md-2">
-          {{course.courseNumber}}
-        </div>
-      </div>
-      <div class="info col-xs-2 col-md-1">
-        <div class="text-center">
-          <a [title]="course.courseNumber + ': ' + course.courseDescription" class="detail-link"
-             href="javascript:void(0);"
-             (click)="showDescriptionPopup(course)"><i
-            class="fa fa-info-circle"></i></a>
-        </div>
-      </div>
+      <app-course-checkbox [course]="course"
+                           [educationId]="educationId"
+                           [isPrimary]="true"
+                           [selection]="selection"></app-course-checkbox>
     </div>
   </div>
 </div>
