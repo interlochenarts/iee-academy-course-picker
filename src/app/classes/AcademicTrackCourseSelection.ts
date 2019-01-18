@@ -1,7 +1,6 @@
 declare const Visualforce: any;
 
 export class AcademicTrackCourseSelection {
-  oid: string;
   courseDescription: string;
   courseNumber: string;
   defaultIndicator: boolean;
@@ -9,10 +8,10 @@ export class AcademicTrackCourseSelection {
   requiredIndicator: boolean;
   sequenceNumber: number;
   gradeLevel: number;
-  academicTrackSelectionOid: string;
   courseOfferingId: string;
   courseRequestId: string;
   courseDetail: string;
+  relatedCourseNumber: string;
 
   isPrimarySelection = false;
   isAlternateSelection = false;

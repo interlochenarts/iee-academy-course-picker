@@ -2,9 +2,11 @@
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   margin: 1em 1em 0 1em;
   border: 1px solid rgb(204, 204, 204);
+
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -19,22 +21,27 @@
   .track-grid-wrapper {
     display:grid;
     grid-gap: 10px;
-    grid-template-columns: 10% 40% 40% 10%;
-  }
+    grid-template-columns: 13% 74% 13%;
 
-  .track-grid-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
 
-    h1 {
-      font-size: 2.0em;
+    .track-grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+
+      h1 {
+        font-size: 2.0em;
+      }
+
+      .row {
+        width: 100%;
+      }
     }
-  }
 
-  .track-grid-left {
-    justify-content: left;
+    .track-grid-left {
+      justify-content: left;
+    }
   }
 }
 
@@ -73,7 +80,7 @@
 }
 
 .course-selection {
-  margin: 1.0em;
+  margin: 0.5em;
 
   span {
     margin: 0.5em;
@@ -110,6 +117,10 @@
       color: #aaa;
       border-color: #bbb;
       cursor: not-allowed;
+    }
+
+    .description {
+      margin: 10px 0;
     }
 
     .checkbox {

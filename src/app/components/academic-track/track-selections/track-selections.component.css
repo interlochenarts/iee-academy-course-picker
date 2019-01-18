@@ -18,18 +18,21 @@
 .track-name .track-grid-wrapper {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-columns: 13% 74% 13%;
 }
-.track-name .track-grid-item {
+.track-name .track-grid-wrapper .track-grid-item {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 0;
 }
-.track-name .track-grid-item h1 {
-  font-size: 2.0em;
+.track-name .track-grid-wrapper .track-grid-item h1 {
+  font-size: 2em;
 }
-.track-name .track-grid-left {
+.track-name .track-grid-wrapper .track-grid-item .row {
+  width: 100%;
+}
+.track-name .track-grid-wrapper .track-grid-left {
   justify-content: left;
 }
 .track-selection {
@@ -61,7 +64,7 @@
   color: #d42741;
 }
 .course-selection {
-  margin: 1.0em;
+  margin: 0.5em;
 }
 .course-selection span {
   margin: 0.5em;
@@ -91,6 +94,9 @@
   color: #aaa;
   border-color: #bbb;
   cursor: not-allowed;
+}
+.course-selection .checkbox-container .description {
+  margin: 10px 0;
 }
 .course-selection .checkbox-container .checkbox label i {
   position: relative;
