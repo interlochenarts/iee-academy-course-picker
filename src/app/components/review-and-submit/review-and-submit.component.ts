@@ -35,22 +35,22 @@ export class ReviewAndSubmitComponent implements OnInit {
         // check each course selection for alternate choices and add to alternate choices map for this semester
         const alternateChoices = ts.courseSelections.filter(c => c.isAlternateSelection);
         this.selectedAlternateCoursesBySemester.set(semester, alternateChoices);
-
-        this.semesterComplete.set(semester, trackSelections.reduce((complete, trackSelection) => {
-          return complete && (trackSelection.selectedCount >= trackSelection.minSelections);
-        }, true));
-
-        this.semesterHasAlternates.set(semester, trackSelections.reduce((hasAlternates, trackSelections) => {
-          return hasAlternates || trackSelections.allowAlternates;
-        }, false));
       });
+
+      this.semesterComplete.set(semester, trackSelections.reduce((complete, trackSelection) => {
+        return complete && (trackSelection.selectedCount >= trackSelection.minSelections);
+      }, true));
+
+      this.semesterHasAlternates.set(semester, trackSelections.reduce((hasAlternates, trackSelections) => {
+        return hasAlternates || trackSelections.allowAlternates;
+      }, false));
     });
   }
 
   canClickCheckbox(): boolean {
     return Array.from(this.semesterComplete.values()).reduce((complete, semCom) => {
       return complete && semCom;
-    }, false);
+    }, true);
   }
 
   onClickCheckbox() {

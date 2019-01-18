@@ -1,19 +1,29 @@
 .semester-name {
   margin: 1em 1em 0 1em;
-  border: 1px solid gray;
+  border: 1px solid rgb(204, 204, 204);
+
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  background: #f3f3f3;
+  padding: 1em;
 }
 
 .semester {
   border: 1px solid rgb(204, 204, 204);
-  margin: 0.75em;
+  border-top: 0;
+  margin: 0 1em 1em 1em;
   padding: 1em;
+
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
 
   p {
     font-size: 1.2em;
@@ -22,6 +32,7 @@
   ul {
     list-style: none;
     padding: 0;
+    margin-left: 1em;
 
     li {
       margin: 0;
@@ -46,3 +57,26 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: #aaa;
+}
+
+.checkbox {
+  label {
+    i {
+      position: relative;
+      left: -20px;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
