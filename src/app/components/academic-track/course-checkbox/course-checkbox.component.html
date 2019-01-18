@@ -14,14 +14,13 @@
   </div>
   <div class="col-xs-9 col-md-8 description">
     <h3>{{course.courseDescription}}</h3>
-  </div>
-  <div class="col-xs-offset-3 col-xs-9 col-md-offset-0 col-md-2">
-    {{course.courseNumber}}
+    <span *ngIf="course.isPrimarySelection && !isPrimary">Chosen as a primary choice</span>
+    <span *ngIf="course.isAlternateSelection && isPrimary">Chosen as an alternate choice</span>
   </div>
 </div>
 <div class="info col-xs-2 col-md-1">
   <div class="text-center">
-    <a [title]="course.courseDescription + ' description'" class="detail-link"
+    <a [title]="course.courseNumber + ': ' + course.courseDescription + ' description'" class="detail-link"
        href="javascript:void(0);"
        (click)="showDescriptionPopup()"><i
       class="fa fa-info-circle"></i></a>

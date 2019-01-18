@@ -10,7 +10,6 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  margin: 0 0.5em;
   padding: 0.5em;
 }
 .checkbox-container:hover {
@@ -19,7 +18,7 @@
 }
 .checkbox-container.disabled,
 .checkbox-container.disabled:hover {
-  background: #ddd;
+  background: #eee;
   color: #aaa;
   border-color: #bbb;
   cursor: not-allowed;
