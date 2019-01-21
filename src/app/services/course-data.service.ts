@@ -9,6 +9,7 @@ declare const Visualforce: any;
 })
 export class CourseDataService {
   public academicTrackFromEducationRecord: BehaviorSubject<AcademicTrack> = new BehaviorSubject<AcademicTrack>(null);
+  public anyCourseUpdating: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() {
   }

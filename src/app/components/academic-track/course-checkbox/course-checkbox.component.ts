@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AcademicTrackCourseSelection} from '../../../classes/AcademicTrackCourseSelection';
 import {ModalService} from '../../../services/modal.service';
 import {AcademicTrackSelection} from '../../../classes/AcademicTrackSelection';
+import {CourseDataService} from '../../../services/course-data.service';
 
 @Component({
   selector: 'app-course-checkbox',
@@ -13,11 +14,15 @@ export class CourseCheckboxComponent implements OnInit {
   @Input() educationId: string;
   @Input() isPrimary: boolean;
   @Input() selection: AcademicTrackSelection;
+  @Input() anyCourseUpdating = false;
 
-  constructor(private modalService: ModalService) {
+  constructor(private modalService: ModalService, private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
+    this.courseDataService.anyCourseUpdating.asObservable().subscribe(up => {
+      this.anyCourseUpdating = up;
+    });
   }
 
   onClickCheckbox(): void {
@@ -27,7 +32,7 @@ export class CourseCheckboxComponent implements OnInit {
       } else {
         this.course.isAlternateSelection = !this.course.isAlternateSelection;
       }
-      this.course.addOrRemoveRequest(this.educationId);
+      this.course.addOrRemoveRequest(this.educationId, this.courseDataService.anyCourseUpdating);
     }
   }
 
@@ -39,10 +44,10 @@ export class CourseCheckboxComponent implements OnInit {
 
   isDisabled(): boolean {
     if (this.isPrimary) {
-      return this.course.isUpdating || this.course.isAlternateSelection || !this.course.isPrimarySelection &&
-        (this.selection.selectedCount >= this.selection.maxSelections);
+      return this.anyCourseUpdating === true || this.course.isAlternateSelection || !this.course.isPrimarySelection
+        && (this.selection.selectedCount >= this.selection.maxSelections);
     } else {
-      return this.course.isUpdating || this.course.isPrimarySelection;
+      return this.anyCourseUpdating === true || this.course.isPrimarySelection;
     }
   }
 

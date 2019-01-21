@@ -1,3 +1,5 @@
+import {BehaviorSubject, Observable} from 'rxjs';
+
 declare const Visualforce: any;
 
 export class AcademicTrackCourseSelection {
@@ -16,18 +18,16 @@ export class AcademicTrackCourseSelection {
   isPrimarySelection = false;
   isAlternateSelection = false;
 
-  isUpdating = false;
-
   public static createFromJson(json: any): AcademicTrackCourseSelection {
     const academicTrackCourseSelection = new AcademicTrackCourseSelection();
     Object.assign(academicTrackCourseSelection, json);
     return academicTrackCourseSelection;
   }
 
-  public addOrRemoveRequest(educationId: string): void {
+  public addOrRemoveRequest(educationId: string, updating: BehaviorSubject<boolean>): void {
     const requestType: string = (this.isAlternateSelection ? 'Alternate' : (this.isPrimarySelection ? 'Primary' : 'none'));
     const deleteRequest: boolean = requestType === 'none';
-    this.isUpdating = true;
+    updating.next(true);
 
     Visualforce.remoting.Manager.invokeAction(
       'IEE_AcademyCourseRequestController.addOrRemoveCourseRequest',
@@ -37,7 +37,7 @@ export class AcademicTrackCourseSelection {
       deleteRequest,
       (savedId: string) => {
         this.courseRequestId = savedId;
-        this.isUpdating = false;
+        updating.next(false);
       },
       {buffer: false, escape: false}
     );
