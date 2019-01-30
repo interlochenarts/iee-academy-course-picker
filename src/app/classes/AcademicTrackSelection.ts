@@ -9,9 +9,13 @@ export class AcademicTrackSelection {
   allowAlternates: boolean;
   sequenceNumber: number;
   instructions: string;
+  semester: string;
   gradeLevel: number;
   academicTrackOid: string;
   courseSelections: Array<AcademicTrackCourseSelection> = [];
+
+  // determines whether this selection is visible or not
+  expanded = false;
 
   public static createFromNestedJson(json: any): AcademicTrackSelection {
     const academicTrackSelection = new AcademicTrackSelection();

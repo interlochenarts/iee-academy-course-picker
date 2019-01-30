@@ -1,0 +1,39 @@
+<div *ngFor="let selection of trackSelections" class="row">
+  <div class="track-name row" (click)="onToggleTrackSelection(selection)">
+    <div class="col-xs-12 track-grid-wrapper">
+      <div class="track-grid-item">
+        <i *ngIf="selection.selectedCount >= selection.minSelections"
+           class="fa fa-check-circle satisfied fa-3x"></i>
+        <i *ngIf="selection.selectedCount < selection.minSelections"
+           class="fa fa-times-circle not-satisfied fa-3x"></i>
+      </div>
+      <div class="track-grid-item track-grid-left">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <h1>{{selection.selectionName.split('-')[0].trim()}}</h1>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            Selections Required: {{selection.minSelections}}<br>
+            Maximum selections: {{selection.maxSelections}}<br>
+            Total Selected: {{selection.selectedCount}}
+          </div>
+        </div>
+      </div>
+      <div class="track-grid-item">
+        <i class="fa fa-caret-down fa-3x" *ngIf="!selection.expanded"></i>
+        <i class="fa fa-caret-up fa-3x" *ngIf="selection.expanded"></i>
+      </div>
+    </div>
+  </div>
+  <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
+    <div class="col-xs-12">
+      <p [innerHtml]="selection.instructions"></p>
+    </div>
+    <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
+      <app-course-checkbox [course]="course"
+                           [educationId]="educationId"
+                           [isPrimary]="true"
+                           [selection]="selection"></app-course-checkbox>
+    </div>
+  </div>
+</div>

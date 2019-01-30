@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-/Salesforce
+/Salesforce/src/staticresources/IEE_AcademyRequestsAngular.resource
 
 # dependencies
 /node_modules

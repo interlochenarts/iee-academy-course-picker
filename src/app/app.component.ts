@@ -1,5 +1,5 @@
 import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {ModalContainerComponent} from './modal-container/modal-container.component';
+import {ModalContainerComponent} from './components/modal-container/modal-container.component';
 import {ModalService} from './services/modal.service';
 
 @Component({
