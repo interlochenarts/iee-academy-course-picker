@@ -1,4 +1,4 @@
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 declare const Visualforce: any;
 
@@ -14,6 +14,7 @@ export class AcademicTrackCourseSelection {
   courseRequestId: string;
   courseDetail: string;
   relatedCourseNumber: string;
+  relatedCourse: AcademicTrackCourseSelection;
 
   isPrimarySelection = false;
   isAlternateSelection = false;
