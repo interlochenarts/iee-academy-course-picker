@@ -19,18 +19,17 @@ export class CourseDataService {
       courses = courses.concat(track.trackSelections[i].courseSelections);
     }
 
-    for (let i = 0; i < courses.length; i++) {
-      if (!courses[i].relatedCourse && courses[i].relatedCourseNumber) {
-        const course = courses[i];
-        for (let j = 0; i < courses.length; j++) {
-          if (course.relatedCourseNumber === courses[j].relatedCourseNumber) {
+    courses.forEach(course => {
+      if (!course.relatedCourse && course.relatedCourseNumber) {
+        for (let j = 0; j < courses.length; j++) {
+          if (course.relatedCourseNumber === courses[j].courseNumber) {
             course.relatedCourse = courses[j];
             courses[j].relatedCourse = course;
             break;
           }
         }
       }
-    }
+    });
   }
 
   constructor() {
