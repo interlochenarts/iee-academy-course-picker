@@ -1,7 +1,4 @@
-<div class="row" *ngFor="let sem of semesters">
-  <div class="semester-name">
-    <h2>{{sem}}</h2>
-  </div>
+<div class="row">
   <div class="semester">
     <h4>Primary Selections</h4>
     <div class="alert alert-danger"
@@ -9,17 +6,17 @@
       <i class="fa fa-exclamation-triangle" style="color:red"></i> You have not selected any primary course requests for
       this session.
     </div>
-    <ul *ngIf="selectedPrimaryCoursesBySemester.get(sem).length > 0">
-      <li *ngFor="let course of selectedPrimaryCoursesBySemester.get(sem)">
-        {{course.courseDescription}}
+    <ul *ngIf="primaryCourses.length > 0">
+      <li *ngFor="let course of primaryCourses">
+        {{course.courseDescription}} | {{course.semesterDescription}}
       </li>
     </ul>
 
-    <div *ngIf="semesterHasAlternates.get(sem)">
+    <div *ngIf="alternatesAvailable">
       <h4>Alternate Selections</h4>
-      <ul *ngIf="selectedAlternateCoursesBySemester.get(sem).length > 0">
-        <li *ngFor="let course of selectedAlternateCoursesBySemester.get(sem)">
-          {{course.courseDescription}}
+      <ul *ngIf="alternateCourses.length > 0">
+        <li *ngFor="let course of alternateCourses">
+          {{course.courseDescription}} | {{course.semesterDescription}}
         </li>
       </ul>
     </div>

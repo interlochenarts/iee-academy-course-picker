@@ -12,13 +12,14 @@ declare const Visualforce: any;
 export class ReviewAndSubmitComponent implements OnInit {
   @Input() educationId: string;
   @Input() trackSelectionsBySemester: Map<string, AcademicTrackSelection[]>;
-  selectedPrimaryCoursesBySemester: Map<string, AcademicTrackCourseSelection[]> = new Map<string, AcademicTrackCourseSelection[]>();
-  selectedAlternateCoursesBySemester: Map<string, AcademicTrackCourseSelection[]> = new Map<string, AcademicTrackCourseSelection[]>();
+  courseSelections = new Array<AcademicTrackCourseSelection>();
   semesters: Array<string> = [];
   readyToSubmit = false;
   semesterComplete: Map<string, boolean> = new Map<string, boolean>();
-  semesterHasAlternates: Map<string, boolean> = new Map<string, boolean>();
+  alternatesAvailable: boolean;
   submitting = false;
+  primaryCourses = new Map<string, ReviewCourseSelection>();
+  alternateCourses = new Map<string, ReviewCourseSelection>();
 
   constructor() {
   }
@@ -28,22 +29,34 @@ export class ReviewAndSubmitComponent implements OnInit {
     // iterate over all values in the track selections map
     this.trackSelectionsBySemester.forEach((trackSelections: AcademicTrackSelection[], semester: string) => {
       trackSelections.forEach(ts => {
-        // check each course selection for primary choices and add to primary choices map for this semester
-        const primaryChoices = ts.courseSelections.filter(c => c.isPrimarySelection);
-        this.selectedPrimaryCoursesBySemester.set(semester, primaryChoices);
+        // add track selections to list
+        this.courseSelections = this.courseSelections.concat(ts.courseSelections);
 
-        // check each course selection for alternate choices and add to alternate choices map for this semester
-        const alternateChoices = ts.courseSelections.filter(c => c.isAlternateSelection);
-        this.selectedAlternateCoursesBySemester.set(semester, alternateChoices);
+        // do any track selections allow alternates?
+        this.alternatesAvailable = this.alternatesAvailable || ts.allowAlternates;
+
+        ts.courseSelections
+          .filter(c => c.isPrimarySelection || c.isAlternateSelection)
+          .map(c => {
+            let semesters: number[] = [];
+            if (semester === 'Full Year') {
+              semesters = [1, 2];
+            } else {
+              const sem: number = +semester.split(' ');
+              semesters.push(sem);
+            }
+
+            const coursesMap = (c.isPrimarySelection ? this.primaryCourses : this.alternateCourses);
+
+            const rcs = coursesMap.get(c.courseDescription) || new ReviewCourseSelection(c.courseDescription);
+            rcs.semesters = rcs.semesters.concat(semesters);
+            coursesMap.set(c.courseDescription, rcs);
+          });
       });
 
-      this.semesterComplete.set(semester, trackSelections.reduce((complete, trackSelection) => {
-        return complete && (trackSelection.selectedCount >= trackSelection.minSelections);
+      this.semesterComplete.set(semester, trackSelections.reduce((complete, ts) => {
+        return complete && (ts.selectedCount >= ts.minSelections);
       }, true));
-
-      this.semesterHasAlternates.set(semester, trackSelections.reduce((hasAlternates, trackSelections) => {
-        return hasAlternates || trackSelections.allowAlternates;
-      }, false));
     });
   }
 

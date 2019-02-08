@@ -10,7 +10,7 @@ export class AcademicTrack {
   public static createFromNestedJson(json: any): AcademicTrack {
     const academicTrack = new AcademicTrack();
     Object.assign(academicTrack, json);
-    academicTrack.trackSelections = json.trackSelections.map(
+    academicTrack.courseSelections = json.courseSelections.map(
       ts => AcademicTrackSelection.createFromNestedJson(ts));
 
     academicTrack.trackSelections.forEach(ats => {
