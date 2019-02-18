@@ -1,36 +1,12 @@
-.semester-name {
-  margin: 1em 1em 0 1em;
-  border: 1px solid #cccccc;
-  -webkit-border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background: #f3f3f3;
-  padding: 1em;
+#semester .alt-head {
+  margin-top: 1em;
 }
-.semester {
-  border: 1px solid #cccccc;
-  border-top: 0;
-  margin: 0 1em 1em 1em;
-  padding: 1em;
-  -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
+#semester .zebra {
+  background-color: #eeeeee;
 }
-.semester p {
-  font-size: 1.2em;
-}
-.semester ul {
-  list-style: none;
-  padding: 0;
-  margin-left: 1em;
-}
-.semester ul li {
-  margin: 0;
-  padding: 0;
+#semester .course-row .course,
+#semester .course-row .semester-number {
+  padding: 0.5em 0;
 }
 .choice {
   border-top: 1px solid #cccccc;

@@ -1,24 +1,37 @@
 <div class="row">
-  <div class="semester">
-    <h4>Primary Selections</h4>
-    <div class="alert alert-danger"
-         *ngIf="selectedPrimaryCoursesBySemester.get(sem).length === 0">
-      <i class="fa fa-exclamation-triangle" style="color:red"></i> You have not selected any primary course requests for
-      this session.
+  <div class="col-xs-12" id="semester">
+    <h3 class="pri-head">Primary Selections</h3>
+    <div class="col-xs-12 course-row">
+      <div class="col-xs-6 col-md-8 course">
+        <h4>Course Name</h4>
+      </div>
+      <div class="col-xs-6 col-md-4 semester-number">
+        <h4>Semester</h4>
+      </div>
     </div>
-    <ul *ngIf="primaryCourses.length > 0">
-      <li *ngFor="let course of primaryCourses">
-        {{course.courseDescription}} | {{course.semesterDescription}}
-      </li>
-    </ul>
+    <div *ngFor="let course of primaryCourses; let i = index"
+         [ngClass]="{zebra: i % 2 === 0}"
+         class="course-row col-xs-12">
+      <div class="col-xs-6 col-md-8 course">{{course.name}}</div>
+      <div class="col-xs-6 col-md-4 semester-number">{{course.semesterDescription}}</div>
+    </div>
 
     <div *ngIf="alternatesAvailable">
-      <h4>Alternate Selections</h4>
-      <ul *ngIf="alternateCourses.length > 0">
-        <li *ngFor="let course of alternateCourses">
-          {{course.courseDescription}} | {{course.semesterDescription}}
-        </li>
-      </ul>
+      <h3 class="alt-head">Alternate Selections</h3>
+      <div class="col-xs-12 course-row">
+        <div class="col-xs-6 col-md-8 course">
+          <h4>Course Name</h4>
+        </div>
+        <div class="col-xs-6 col-md-4 semester-number">
+          <h4>Semester</h4>
+        </div>
+      </div>
+      <div *ngFor="let course of alternateCourses; let i = index"
+           [ngClass]="{zebra: i % 2 === 0}"
+           class="course-row col-xs-12">
+        <div class="col-xs-6 col-md-8 course">{{course.name}}</div>
+        <div class="col-xs-6 col-md-4 semester-number">{{course.semesterDescription}}</div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AcademicTrackSelection} from '../../../classes/AcademicTrackSelection';
-import {AcademicTrackCourseSelection} from '../../../classes/AcademicTrackCourseSelection';
+import {ReviewCourseSelection} from '../../../classes/ReviewCourseSelection';
 
 declare const Visualforce: any;
 
@@ -12,14 +12,15 @@ declare const Visualforce: any;
 export class ReviewAndSubmitComponent implements OnInit {
   @Input() educationId: string;
   @Input() trackSelectionsBySemester: Map<string, AcademicTrackSelection[]>;
-  courseSelections = new Array<AcademicTrackCourseSelection>();
   semesters: Array<string> = [];
   readyToSubmit = false;
   semesterComplete: Map<string, boolean> = new Map<string, boolean>();
   alternatesAvailable: boolean;
   submitting = false;
-  primaryCourses = new Map<string, ReviewCourseSelection>();
-  alternateCourses = new Map<string, ReviewCourseSelection>();
+  primaryCoursesMap = new Map<string, ReviewCourseSelection>();
+  alternateCoursesMap = new Map<string, ReviewCourseSelection>();
+  primaryCourses: Array<ReviewCourseSelection>;
+  alternateCourses: Array<ReviewCourseSelection>;
 
   constructor() {
   }
@@ -29,9 +30,6 @@ export class ReviewAndSubmitComponent implements OnInit {
     // iterate over all values in the track selections map
     this.trackSelectionsBySemester.forEach((trackSelections: AcademicTrackSelection[], semester: string) => {
       trackSelections.forEach(ts => {
-        // add track selections to list
-        this.courseSelections = this.courseSelections.concat(ts.courseSelections);
-
         // do any track selections allow alternates?
         this.alternatesAvailable = this.alternatesAvailable || ts.allowAlternates;
 
@@ -42,14 +40,14 @@ export class ReviewAndSubmitComponent implements OnInit {
             if (semester === 'Full Year') {
               semesters = [1, 2];
             } else {
-              const sem: number = +semester.split(' ');
-              semesters.push(sem);
+              semesters.push(+semester.substr(semester.indexOf(' ')));
             }
 
-            const coursesMap = (c.isPrimarySelection ? this.primaryCourses : this.alternateCourses);
+            const coursesMap = (c.isPrimarySelection ? this.primaryCoursesMap : this.alternateCoursesMap);
 
+            console.log('current course: ' + c.courseDescription + ', semesters: ' + semesters);
             const rcs = coursesMap.get(c.courseDescription) || new ReviewCourseSelection(c.courseDescription);
-            rcs.semesters = rcs.semesters.concat(semesters);
+            semesters.forEach(s => rcs.semesters.add(s));
             coursesMap.set(c.courseDescription, rcs);
           });
       });
@@ -58,6 +56,15 @@ export class ReviewAndSubmitComponent implements OnInit {
         return complete && (ts.selectedCount >= ts.minSelections);
       }, true));
     });
+
+    console.log('primaryCoursesMap:');
+    console.log(this.primaryCoursesMap);
+
+    console.log('alternateCoursesMap:');
+    console.log(this.alternateCoursesMap);
+
+    this.primaryCourses = Array.from(this.primaryCoursesMap.values());
+    this.alternateCourses = Array.from(this.alternateCoursesMap.values());
   }
 
   canClickCheckbox(): boolean {
