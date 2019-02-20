@@ -3,12 +3,10 @@
     <app-request-list [courses]="primaryCourses"
                       selectionType="Primary"></app-request-list>
 
-    <div class="col-xs-12" *ngIf="canClickCheckbox() === false">
-      <div class="alert alert-danger">
-        <i class="fa fa-exclamation-triangle" style="color:red"></i>
-        {{primaryErrorMessage}}
-      </div>
-    </div>
+    <app-review-alert-message [visible]="canClickCheckbox() === false"
+                              alertType="danger"
+                              icon="fa-exclamation-triangle"
+                              [message]="primaryErrorMessage"></app-review-alert-message>
 
     <app-request-list *ngIf="alternatesAvailable"
                       [courses]="alternateCourses"
