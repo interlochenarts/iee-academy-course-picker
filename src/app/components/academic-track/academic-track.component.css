@@ -13,4 +13,10 @@
   border: 1px solid #ccc;
   border-bottom-color: transparent;
 }
+.satisfied {
+  color: #91bb3e;
+}
+.not-satisfied {
+  color: #d42741;
+}
 /*# sourceMappingURL=academic-track.component.css.map */

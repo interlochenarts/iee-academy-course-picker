@@ -33,6 +33,7 @@ export class CourseCheckboxComponent implements OnInit {
         this.course.isAlternateSelection = !this.course.isAlternateSelection;
       }
       this.course.addOrRemoveRequest(this.educationId, this.courseDataService.anyCourseUpdating, true);
+      this.courseDataService.updateSemesterComplete();
     }
   }
 

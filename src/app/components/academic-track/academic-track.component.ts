@@ -32,6 +32,7 @@ export class AcademicTrackComponent implements OnInit {
   alternatesSelected = false;
   alternatesAvailable: boolean;
   terms: Array<string>;
+  semesterComplete: Map<string, boolean>;
 
   constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
   }
@@ -53,6 +54,8 @@ export class AcademicTrackComponent implements OnInit {
         this.selectedTerm = this.terms[0];
       }
     });
+
+    this.courseDataService.semesterComplete.asObservable().subscribe(c => this.semesterComplete = c);
   }
 
   onChangeTerm(newTerm: string) {

@@ -9,9 +9,9 @@ declare const Visualforce: any;
   providedIn: 'root'
 })
 export class CourseDataService {
-  public academicTrackFromEducationRecord: BehaviorSubject<AcademicTrack> = new BehaviorSubject<AcademicTrack>(null);
-  public anyCourseUpdating: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  public academicTrackFromEducationRecord = new BehaviorSubject<AcademicTrack>(null);
+  public anyCourseUpdating = new BehaviorSubject<boolean>(false);
+  public semesterComplete = new BehaviorSubject<Map<string, boolean>>(null);
 
   public static setRelatedCoursesForTrack(track: AcademicTrack): void {
     let courses: AcademicTrackCourseSelection[] = [];
@@ -32,6 +32,17 @@ export class CourseDataService {
     });
   }
 
+  public updateSemesterComplete(): void {
+    const at: AcademicTrack = this.academicTrackFromEducationRecord.getValue();
+    const complete = new Map<string, boolean>();
+    at.trackSelectionsBySemester.forEach((trackSelections, semester) => {
+      complete.set(semester, trackSelections.reduce((complete, ts) => {
+        return complete && (ts.selectedCount >= ts.minSelections);
+      }, true));
+    });
+    this.semesterComplete.next(complete);
+  }
+
   constructor() {
   }
 
@@ -47,6 +58,7 @@ export class CourseDataService {
             const academicTrack = AcademicTrack.createFromNestedJson(j);
             this.academicTrackFromEducationRecord.next(academicTrack);
             CourseDataService.setRelatedCoursesForTrack(academicTrack);
+            this.updateSemesterComplete();
           }
         },
         {buffer: false, escape: false}

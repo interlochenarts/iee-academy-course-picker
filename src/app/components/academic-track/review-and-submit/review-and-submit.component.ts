@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AcademicTrackSelection} from '../../../classes/AcademicTrackSelection';
 import {ReviewCourseSelection} from '../../../classes/ReviewCourseSelection';
+import {CourseDataService} from '../../../services/course-data.service';
 
 declare const Visualforce: any;
 
@@ -39,7 +40,7 @@ export class ReviewAndSubmitComponent implements OnInit {
     return beginning + incompleteSemesters.join(' and ') + end;
   }
 
-  constructor() {
+  constructor(private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
@@ -68,17 +69,10 @@ export class ReviewAndSubmitComponent implements OnInit {
             coursesMap.set(c.courseDescription, rcs);
           });
       });
-
-      this.semesterComplete.set(semester, trackSelections.reduce((complete, ts) => {
-        return complete && (ts.selectedCount >= ts.minSelections);
-      }, true));
     });
 
-    console.log('primaryCoursesMap:');
-    console.log(this.primaryCoursesMap);
-
-    console.log('alternateCoursesMap:');
-    console.log(this.alternateCoursesMap);
+    this.courseDataService.semesterComplete.asObservable().subscribe(c => this.semesterComplete = c);
+    this.courseDataService.updateSemesterComplete();
 
     this.primaryCourses = Array.from(this.primaryCoursesMap.values());
     this.alternateCourses = Array.from(this.alternateCoursesMap.values());

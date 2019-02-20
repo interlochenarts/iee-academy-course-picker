@@ -3,7 +3,11 @@
       class="active"
       *ngFor="let term of terms"
       [ngClass]="{active: term === selectedTerm}">
-    <a href="javascript:void(0);" (click)="onChangeTerm(term)">{{term}}</a>
+    <a href="javascript:void(0);" (click)="onChangeTerm(term)">
+      <i *ngIf="semesterComplete.get(term)" class="fa fa-check-circle satisfied"></i>
+      <i *ngIf="semesterComplete.get(term) === false" class="fa fa-times-circle not-satisfied"></i>
+      {{term}}
+    </a>
   </li>
   <li role="presentation" *ngIf="alternatesAvailable === true" [ngClass]="{active: alternatesSelected}">
     <a href="javascript:void(0);" (click)="onSelectAlternates()">Alternates</a>

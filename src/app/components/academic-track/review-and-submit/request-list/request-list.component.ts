@@ -10,9 +10,13 @@ export class RequestListComponent implements OnInit {
   @Input() selectionType: string;
   @Input() courses: Array<ReviewCourseSelection>;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    if (this.courses) {
+      this.courses.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+    }
   }
 
 }
