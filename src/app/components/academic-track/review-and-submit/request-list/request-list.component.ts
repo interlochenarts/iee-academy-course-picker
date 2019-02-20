@@ -18,5 +18,4 @@ export class RequestListComponent implements OnInit {
       this.courses.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
     }
   }
-
 }

@@ -18,4 +18,8 @@
 .checkbox label.disabled {
   cursor: not-allowed;
 }
+.nudge-down {
+  position: relative;
+  top: 15px;
+}
 /*# sourceMappingURL=review-and-submit.component.css.map */
