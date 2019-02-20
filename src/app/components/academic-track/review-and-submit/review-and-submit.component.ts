@@ -13,22 +13,40 @@ export class ReviewAndSubmitComponent implements OnInit {
   @Input() educationId: string;
   @Input() trackSelectionsBySemester: Map<string, AcademicTrackSelection[]>;
   semesters: Array<string> = [];
-  readyToSubmit = false;
   semesterComplete: Map<string, boolean> = new Map<string, boolean>();
-  alternatesAvailable: boolean;
-  submitting = false;
   primaryCoursesMap = new Map<string, ReviewCourseSelection>();
   alternateCoursesMap = new Map<string, ReviewCourseSelection>();
   primaryCourses: Array<ReviewCourseSelection>;
   alternateCourses: Array<ReviewCourseSelection>;
 
+  alternatesAvailable = false;
+  submitting = false;
+  readyToSubmit = false;
+
+  get primaryErrorMessage(): string {
+    const beginning = 'You have not made all of your requests for ';
+    const end = '. Please complete your selections.';
+
+    const incompleteSemesters: string[] = [];
+    this.semesterComplete.forEach((isComplete, semester) => {
+      if (isComplete === false) {
+        incompleteSemesters.push(semester);
+      }
+    });
+
+    incompleteSemesters.sort();
+
+    return beginning + incompleteSemesters.join(' and ') + end;
+  }
+
   constructor() {
   }
 
   ngOnInit() {
-    this.semesters = Array.from(this.trackSelectionsBySemester.keys());
     // iterate over all values in the track selections map
     this.trackSelectionsBySemester.forEach((trackSelections: AcademicTrackSelection[], semester: string) => {
+      this.semesters.push(semester);
+
       trackSelections.forEach(ts => {
         // do any track selections allow alternates?
         this.alternatesAvailable = this.alternatesAvailable || ts.allowAlternates;
@@ -45,7 +63,6 @@ export class ReviewAndSubmitComponent implements OnInit {
 
             const coursesMap = (c.isPrimarySelection ? this.primaryCoursesMap : this.alternateCoursesMap);
 
-            console.log('current course: ' + c.courseDescription + ', semesters: ' + semesters);
             const rcs = coursesMap.get(c.courseDescription) || new ReviewCourseSelection(c.courseDescription);
             semesters.forEach(s => rcs.semesters.add(s));
             coursesMap.set(c.courseDescription, rcs);

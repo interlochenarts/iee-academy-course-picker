@@ -15,6 +15,7 @@ import {ReviewAndSubmitComponent} from './components/academic-track/review-and-s
 import {AlternatesComponent} from './components/academic-track/alternates/alternates.component';
 import {TrackSelectionsComponent} from './components/academic-track/track-selections/track-selections.component';
 import { CourseCheckboxComponent } from './components/academic-track/course-checkbox/course-checkbox.component';
+import { RequestListComponent } from './components/academic-track/review-and-submit/request-list/request-list.component';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     ReviewAndSubmitComponent,
     AlternatesComponent,
     TrackSelectionsComponent,
-    CourseCheckboxComponent
+    CourseCheckboxComponent,
+    RequestListComponent
   ],
   imports: [
     BrowserModule,

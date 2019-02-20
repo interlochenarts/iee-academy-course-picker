@@ -1,38 +1,18 @@
 <div class="row">
   <div class="col-xs-12" id="semester">
-    <h3 class="pri-head">Primary Selections</h3>
-    <div class="col-xs-12 course-row">
-      <div class="col-xs-6 col-md-8 course">
-        <h4>Course Name</h4>
+    <app-request-list [courses]="primaryCourses"
+                      selectionType="Primary"></app-request-list>
+
+    <div class="col-xs-12" *ngIf="canClickCheckbox() === false">
+      <div class="alert alert-danger">
+        <i class="fa fa-exclamation-triangle" style="color:red"></i>
+        {{primaryErrorMessage}}
       </div>
-      <div class="col-xs-6 col-md-4 semester-number">
-        <h4>Semester</h4>
-      </div>
-    </div>
-    <div *ngFor="let course of primaryCourses; let i = index"
-         [ngClass]="{zebra: i % 2 === 0}"
-         class="course-row col-xs-12">
-      <div class="col-xs-6 col-md-8 course">{{course.name}}</div>
-      <div class="col-xs-6 col-md-4 semester-number">{{course.semesterDescription}}</div>
     </div>
 
-    <div *ngIf="alternatesAvailable">
-      <h3 class="alt-head">Alternate Selections</h3>
-      <div class="col-xs-12 course-row">
-        <div class="col-xs-6 col-md-8 course">
-          <h4>Course Name</h4>
-        </div>
-        <div class="col-xs-6 col-md-4 semester-number">
-          <h4>Semester</h4>
-        </div>
-      </div>
-      <div *ngFor="let course of alternateCourses; let i = index"
-           [ngClass]="{zebra: i % 2 === 0}"
-           class="course-row col-xs-12">
-        <div class="col-xs-6 col-md-8 course">{{course.name}}</div>
-        <div class="col-xs-6 col-md-4 semester-number">{{course.semesterDescription}}</div>
-      </div>
-    </div>
+    <app-request-list *ngIf="alternatesAvailable"
+                      [courses]="alternateCourses"
+                      selectionType="Alternate"></app-request-list>
   </div>
 </div>
 

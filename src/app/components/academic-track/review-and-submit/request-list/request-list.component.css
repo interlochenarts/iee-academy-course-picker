@@ -1,0 +1,14 @@
+.course-row.zebra,
+.course-header-row.zebra {
+  background-color: #eeeeee;
+}
+.course-row .course,
+.course-header-row .course,
+.course-row .semester-number,
+.course-header-row .semester-number {
+  padding: 0.5em 0;
+}
+.request-list-container {
+  margin-bottom: 2em;
+}
+/*# sourceMappingURL=request-list.component.css.map */
