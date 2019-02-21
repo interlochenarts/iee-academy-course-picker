@@ -14,17 +14,19 @@ export class CourseDataService {
   public semesterComplete = new BehaviorSubject<Map<string, boolean>>(null);
 
   public static setRelatedCoursesForTrack(track: AcademicTrack): void {
-    let courses: AcademicTrackCourseSelection[] = [];
-    for (let i = 0; i < track.trackSelections.length; i++) {
-      courses = courses.concat(track.trackSelections[i].courseSelections);
-    }
+    const courses: AcademicTrackCourseSelection[] = [];
+    track.trackSelections.forEach(trackSelection => {
+      courses.push.apply(courses, trackSelection.courseSelections);
+    });
 
     courses.forEach(course => {
       if (!course.relatedCourse && course.relatedCourseNumber) {
         for (let j = 0; j < courses.length; j++) {
           if (course.relatedCourseNumber === courses[j].courseNumber) {
+            console.log('found related courses: ' + course.courseNumber + ' & ' + courses[j].courseNumber);
             course.relatedCourse = courses[j];
-            courses[j].relatedCourse = course;
+            console.log(courses[j]);
+            console.log(course);
             break;
           }
         }
@@ -36,8 +38,8 @@ export class CourseDataService {
     const at: AcademicTrack = this.academicTrackFromEducationRecord.getValue();
     const complete = new Map<string, boolean>();
     at.trackSelectionsBySemester.forEach((trackSelections, semester) => {
-      complete.set(semester, trackSelections.reduce((complete, ts) => {
-        return complete && (ts.selectedCount >= ts.minSelections);
+      complete.set(semester, trackSelections.reduce((isComplete, ts) => {
+        return isComplete && (ts.selectedCount >= ts.minSelections);
       }, true));
     });
     this.semesterComplete.next(complete);
@@ -56,8 +58,8 @@ export class CourseDataService {
             const j = JSON.parse(json);
             // build academic tracks
             const academicTrack = AcademicTrack.createFromNestedJson(j);
-            this.academicTrackFromEducationRecord.next(academicTrack);
             CourseDataService.setRelatedCoursesForTrack(academicTrack);
+            this.academicTrackFromEducationRecord.next(academicTrack);
             this.updateSemesterComplete();
           }
         },
