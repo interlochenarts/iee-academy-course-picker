@@ -14,15 +14,15 @@
   cursor: pointer;
 
   background-color: #f3f3f3;
+
   &:hover {
     background-color: #eee;
   }
 
   .track-grid-wrapper {
-    display:grid;
+    display: grid;
     grid-gap: 10px;
     grid-template-columns: 13% 74% 13%;
-
 
     .track-grid-item {
       display: flex;
@@ -36,6 +36,12 @@
 
       .row {
         width: 100%;
+        display: flex;
+
+        .col-xs-12, .col-md-6 {
+          display: flex;
+          align-items: center;
+        }
       }
     }
 
