@@ -32,6 +32,7 @@
     <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
+                           [semester]="selection.semester"
                            [isPrimary]="true"
                            [selection]="selection"></app-course-checkbox>
     </div>
