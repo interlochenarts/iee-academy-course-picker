@@ -8,9 +8,14 @@
                               icon="fa-exclamation-triangle"
                               [message]="primaryErrorMessage"></app-review-alert-message>
 
-    <app-request-list *ngIf="alternatesAvailable"
+    <app-request-list *ngIf="alternatesAvailable && alternateCourses.length > 0"
                       [courses]="alternateCourses"
                       selectionType="Alternate"></app-request-list>
+
+    <app-review-alert-message [visible]="alternatesAvailable && alternateCourses.length === 0"
+                              alertType="info"
+                              icon="fa-exclamation-triangle"
+                              message="While an alternate choice is not required, you are encouraged to choose one or more."></app-review-alert-message>
   </div>
 </div>
 
