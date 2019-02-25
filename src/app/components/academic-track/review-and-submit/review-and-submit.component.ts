@@ -98,7 +98,7 @@ export class ReviewAndSubmitComponent implements OnInit {
       (saved: boolean) => {
         // redirect on true
         if (saved) {
-          window.location.href = 'IEE_AcademyCourseRequestsSelected?eid=' + this.educationId;
+          window.location.href = 'IEE_AcademyCourseRequestsSelected?edId=' + this.educationId;
         } else {
           this.submitting = false;
           console.log('something went wrong while submitting');
