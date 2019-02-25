@@ -32,8 +32,6 @@ export class AcademicTrackCourseSelection {
     const deleteRequest: boolean = requestType === 'none';
     updating.next(true);
 
-    console.log('saving ' + this.courseNumber);
-
     return new Promise(resolve => {
       Visualforce.remoting.Manager.invokeAction(
         'IEE_AcademyCourseRequestController.addOrRemoveCourseRequest',

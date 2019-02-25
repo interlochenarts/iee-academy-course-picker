@@ -23,10 +23,7 @@ export class CourseDataService {
       if (!course.relatedCourse && course.relatedCourseNumber) {
         for (let j = 0; j < courses.length; j++) {
           if (course.relatedCourseNumber === courses[j].courseNumber) {
-            console.log('found related courses: ' + course.courseNumber + ' & ' + courses[j].courseNumber);
             course.relatedCourse = courses[j];
-            console.log(courses[j]);
-            console.log(course);
             break;
           }
         }
