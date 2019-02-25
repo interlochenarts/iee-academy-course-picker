@@ -93,12 +93,12 @@ export class ReviewAndSubmitComponent implements OnInit {
   onSubmit() {
     this.submitting = true;
     Visualforce.remoting.Manager.invokeAction(
-      'IEE_ElectivePicker_Controller.saveElectiveComplete',
+      'IEE_AcademyCourseRequestController.saveRequestsComplete',
       this.educationId,
       (saved: boolean) => {
         // redirect on true
         if (saved) {
-          window.location.href = 'IEE_AcademyCoursesRequested?eid=' + this.educationId;
+          window.location.href = 'IEE_AcademyCourseRequestsSelected?eid=' + this.educationId;
         } else {
           this.submitting = false;
           console.log('something went wrong while submitting');
