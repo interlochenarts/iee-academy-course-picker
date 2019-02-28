@@ -1,13 +1,22 @@
-.course-row, .course-header-row {
-  &.zebra {
-    background-color: #eeeeee;
-  }
-
-  .course, .semester-number {
-    padding: 0.5em 0;
-  }
-}
-
 .request-list-container {
-  margin-bottom: 2em;
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1.5em;
+
+  h3 {
+    text-align: center;
+  }
+
+  .course-header {
+    padding-left: 0;
+  }
+
+  .course-row {
+    padding: 0.5em 0;
+    border-top: 1px solid #ccc;
+
+    &.first {
+      border-top: 0;
+    }
+  }
 }
