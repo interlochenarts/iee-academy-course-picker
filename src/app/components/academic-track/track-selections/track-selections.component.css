@@ -32,6 +32,11 @@
 .track-name .track-grid-wrapper .track-grid-item .row {
   width: 100%;
 }
+.track-name .track-grid-wrapper .track-grid-item .row .col-xs-12,
+.track-name .track-grid-wrapper .track-grid-item .row .col-md-6 {
+  display: flex;
+  align-items: center;
+}
 .track-name .track-grid-wrapper .track-grid-left {
   justify-content: left;
 }

@@ -1,0 +1,19 @@
+.request-list-container {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1.5em;
+}
+.request-list-container h3 {
+  text-align: center;
+}
+.request-list-container .course-header {
+  padding-left: 0;
+}
+.request-list-container .course-row {
+  padding: 0.5em 0;
+  border-top: 1px solid #ccc;
+}
+.request-list-container .course-row.first {
+  border-top: 0;
+}
+/*# sourceMappingURL=request-list.component.css.map */

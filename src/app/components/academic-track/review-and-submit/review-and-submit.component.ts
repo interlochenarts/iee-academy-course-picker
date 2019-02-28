@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AcademicTrackSelection} from '../../../classes/AcademicTrackSelection';
-import {AcademicTrackCourseSelection} from '../../../classes/AcademicTrackCourseSelection';
+import {ReviewCourseSelection} from '../../../classes/ReviewCourseSelection';
+import {CourseDataService} from '../../../services/course-data.service';
 
 declare const Visualforce: any;
 
@@ -12,39 +13,69 @@ declare const Visualforce: any;
 export class ReviewAndSubmitComponent implements OnInit {
   @Input() educationId: string;
   @Input() trackSelectionsBySemester: Map<string, AcademicTrackSelection[]>;
-  selectedPrimaryCoursesBySemester: Map<string, AcademicTrackCourseSelection[]> = new Map<string, AcademicTrackCourseSelection[]>();
-  selectedAlternateCoursesBySemester: Map<string, AcademicTrackCourseSelection[]> = new Map<string, AcademicTrackCourseSelection[]>();
   semesters: Array<string> = [];
-  readyToSubmit = false;
   semesterComplete: Map<string, boolean> = new Map<string, boolean>();
-  semesterHasAlternates: Map<string, boolean> = new Map<string, boolean>();
-  submitting = false;
+  primaryCoursesMap = new Map<string, ReviewCourseSelection>();
+  alternateCoursesMap = new Map<string, ReviewCourseSelection>();
+  primaryCourses: Array<ReviewCourseSelection>;
+  alternateCourses: Array<ReviewCourseSelection>;
 
-  constructor() {
+  alternatesAvailable = false;
+  submitting = false;
+  readyToSubmit = false;
+
+  get primaryErrorMessage(): string {
+    const beginning = 'You have not made all of your requests for ';
+    const end = '. Please complete your selections.';
+
+    const incompleteSemesters: string[] = [];
+    this.semesterComplete.forEach((isComplete, semester) => {
+      if (isComplete === false) {
+        incompleteSemesters.push(semester);
+      }
+    });
+
+    incompleteSemesters.sort();
+
+    return beginning + incompleteSemesters.join(' and ') + end;
+  }
+
+  constructor(private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
-    this.semesters = Array.from(this.trackSelectionsBySemester.keys());
     // iterate over all values in the track selections map
     this.trackSelectionsBySemester.forEach((trackSelections: AcademicTrackSelection[], semester: string) => {
+      this.semesters.push(semester);
+
       trackSelections.forEach(ts => {
-        // check each course selection for primary choices and add to primary choices map for this semester
-        const primaryChoices = ts.courseSelections.filter(c => c.isPrimarySelection);
-        this.selectedPrimaryCoursesBySemester.set(semester, primaryChoices);
+        // do any track selections allow alternates?
+        this.alternatesAvailable = this.alternatesAvailable || ts.allowAlternates;
 
-        // check each course selection for alternate choices and add to alternate choices map for this semester
-        const alternateChoices = ts.courseSelections.filter(c => c.isAlternateSelection);
-        this.selectedAlternateCoursesBySemester.set(semester, alternateChoices);
+        ts.courseSelections
+          .filter(c => c.isPrimarySelection || c.isAlternateSelection)
+          .map(c => {
+            let semesters: number[] = [];
+            if (semester === 'Full Year') {
+              semesters = [1, 2];
+            } else {
+              semesters.push(+semester.substr(semester.indexOf(' ')));
+            }
+
+            const coursesMap = (c.isPrimarySelection ? this.primaryCoursesMap : this.alternateCoursesMap);
+
+            const rcs = coursesMap.get(c.courseDescription) || new ReviewCourseSelection(c.courseDescription);
+            semesters.forEach(s => rcs.semesters.add(s));
+            coursesMap.set(c.courseDescription, rcs);
+          });
       });
-
-      this.semesterComplete.set(semester, trackSelections.reduce((complete, trackSelection) => {
-        return complete && (trackSelection.selectedCount >= trackSelection.minSelections);
-      }, true));
-
-      this.semesterHasAlternates.set(semester, trackSelections.reduce((hasAlternates, ts) => {
-        return hasAlternates || ts.allowAlternates;
-      }, false));
     });
+
+    this.courseDataService.semesterComplete.asObservable().subscribe(c => this.semesterComplete = c);
+    this.courseDataService.updateSemesterComplete();
+
+    this.primaryCourses = Array.from(this.primaryCoursesMap.values());
+    this.alternateCourses = Array.from(this.alternateCoursesMap.values());
   }
 
   canClickCheckbox(): boolean {
@@ -67,7 +98,7 @@ export class ReviewAndSubmitComponent implements OnInit {
       (saved: boolean) => {
         // redirect on true
         if (saved) {
-          window.location.href = 'IEE_AcademyCoursesRequested?edId=' + this.educationId;
+          window.location.href = 'IEE_AcademyCourseRequestsSelected?edId=' + this.educationId;
         } else {
           this.submitting = false;
           console.log('something went wrong while submitting');

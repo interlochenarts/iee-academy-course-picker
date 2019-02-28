@@ -4,6 +4,7 @@ import {AcademicTrack} from '../../classes/AcademicTrack';
 import {CourseDataService} from '../../services/course-data.service';
 import {AcademicTrackSelection} from '../../classes/AcademicTrackSelection';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {expand} from 'rxjs/operators';
 
 @Component({
   selector: 'app-academic-track',
@@ -32,6 +33,7 @@ export class AcademicTrackComponent implements OnInit {
   alternatesSelected = false;
   alternatesAvailable: boolean;
   terms: Array<string>;
+  semesterComplete: Map<string, boolean>;
 
   constructor(private activatedRoute: ActivatedRoute, private courseDataService: CourseDataService) {
   }
@@ -53,21 +55,26 @@ export class AcademicTrackComponent implements OnInit {
         this.selectedTerm = this.terms[0];
       }
     });
+
+    this.courseDataService.semesterComplete.asObservable().subscribe(c => this.semesterComplete = c);
   }
 
   onChangeTerm(newTerm: string) {
+    this.academicTrack.trackSelections.forEach(ts => ts.expanded = false);
     this.selectedTerm = newTerm;
     this.reviewAndSubmitSelected = false;
     this.alternatesSelected = false;
   }
 
   onSelectReviewAndSubmit() {
+    this.academicTrack.trackSelections.forEach(ts => ts.expanded = false);
     this.selectedTerm = null;
     this.reviewAndSubmitSelected = true;
     this.alternatesSelected = false;
   }
 
   onSelectAlternates() {
+    this.academicTrack.trackSelections.forEach(ts => ts.expanded = false);
     this.selectedTerm = null;
     this.reviewAndSubmitSelected = false;
     this.alternatesSelected = true;
