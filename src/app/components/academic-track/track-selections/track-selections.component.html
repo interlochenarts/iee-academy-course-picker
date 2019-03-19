@@ -5,7 +5,7 @@
         <i *ngIf="selection.selectedCount >= selection.minSelections"
            class="fa fa-check-circle satisfied fa-2x"></i>
         <i *ngIf="selection.selectedCount < selection.minSelections"
-           class="fa fa-times-circle not-satisfied fa-2x"></i>
+           class="fa fa-exclamation-triangle not-satisfied fa-2x"></i>
       </div>
       <div class="track-grid-item">
         <div class="row">
@@ -13,9 +13,7 @@
             <h2>{{selection.selectionName.split('-')[0].trim()}}</h2>
           </div>
           <div class="col-xs-12 col-md-6">
-            Selections Required: {{selection.minSelections}}<br>
-            Maximum selections: {{selection.maxSelections}}<br>
-            Total Selected: {{selection.selectedCount}}
+            Selections Required: {{selection.minSelections}}
           </div>
         </div>
       </div>
