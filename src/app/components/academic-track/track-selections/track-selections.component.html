@@ -26,9 +26,6 @@
     </div>
   </div>
   <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
-    <div class="col-xs-12">
-      <p [innerHtml]="selection.instructions"></p>
-    </div>
     <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
