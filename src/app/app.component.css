@@ -1,4 +1,7 @@
 .col-xs-12 {
   padding: 0;
 }
+.instructions {
+  border: 2px solid #b01e33;
+}
 /*# sourceMappingURL=app.component.css.map */
