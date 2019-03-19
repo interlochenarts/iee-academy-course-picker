@@ -13,7 +13,7 @@
     <i class="fa fa-2x fa-spinner fa-pulse fa-fw"></i>
   </div>
   <div class="col-xs-9 col-md-8 description">
-    <h3>{{course.courseDescription}}</h3>
+    <h3>{{course.courseDescription}}<span *ngIf="course.relatedCourseNumber" class="full-year"> (Full Year)</span></h3>
     <span *ngIf="course.isPrimarySelection && !isPrimary">Chosen as a primary choice</span>
     <span *ngIf="course.isAlternateSelection && isPrimary">Chosen as an alternate choice</span>
   </div>
