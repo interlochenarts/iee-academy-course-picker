@@ -5,7 +5,7 @@
       [ngClass]="{active: term === selectedTerm}">
     <a href="javascript:void(0);" (click)="onChangeTerm(term)">
       <i *ngIf="semesterComplete.get(term)" class="fa fa-check-circle satisfied"></i>
-      <i *ngIf="semesterComplete.get(term) === false" class="fa fa-times-circle not-satisfied"></i>
+      <i *ngIf="semesterComplete.get(term) === false" class="fa fa-exclamation-triangle not-satisfied"></i>
       {{term}}
     </a>
   </li>
