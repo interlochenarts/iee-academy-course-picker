@@ -4,6 +4,7 @@ export class AcademicTrack {
   oid: string;
   name: string;
   type: string;
+  instructions: string;
   trackSelections: Array<AcademicTrackSelection> = [];
   trackSelectionsBySemester: Map<string, Array<AcademicTrackSelection>> = new Map<string, Array<AcademicTrackSelection>>();
 
