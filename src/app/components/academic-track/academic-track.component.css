@@ -13,6 +13,9 @@
   border: 1px solid #ccc;
   border-bottom-color: transparent;
 }
+.nav-tabs {
+  border-bottom: 0;
+}
 .satisfied {
   color: #91bb3e;
 }
