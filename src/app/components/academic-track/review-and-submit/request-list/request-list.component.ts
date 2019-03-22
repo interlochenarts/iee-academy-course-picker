@@ -21,12 +21,12 @@ export class RequestListComponent implements OnInit {
       this.courses.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
     }
     if (this.courseRequestSummaries) {
-      if (this.courseRequestSummaries.get(1) && this.courseRequestSummaries.get(1).indexOf('\n') > 0) {
+      if (this.courseRequestSummaries.get(1)) {
         this.semesterOne = this.courseRequestSummaries.get(1).split('\n');
       } else {
         this.semesterOne.push(this.courseRequestSummaries.get(1));
       }
-      if (this.courseRequestSummaries.get(2) && this.courseRequestSummaries.get(2).indexOf('\n') > 0) {
+      if (this.courseRequestSummaries.get(2)) {
         this.semesterTwo = this.courseRequestSummaries.get(2).split('\n');
       } else {
         this.semesterTwo.push(this.courseRequestSummaries.get(2));
