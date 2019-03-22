@@ -9,6 +9,9 @@ import {ReviewCourseSelection} from '../../../../classes/ReviewCourseSelection';
 export class RequestListComponent implements OnInit {
   @Input() selectionType: string;
   @Input() courses: Array<ReviewCourseSelection>;
+  @Input() courseRequestSummaries: Map<number, string>;
+  semesterOne: Array<string> = [];
+  semesterTwo: Array<string> = [];
 
   constructor() {
   }
@@ -16,6 +19,30 @@ export class RequestListComponent implements OnInit {
   ngOnInit() {
     if (this.courses) {
       this.courses.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+    }
+    if (this.courseRequestSummaries) {
+      if (this.courseRequestSummaries.get(1) && this.courseRequestSummaries.get(1).indexOf('\n') > 0) {
+        this.semesterOne = this.courseRequestSummaries.get(1).split('\n');
+      } else {
+        this.semesterOne.push(this.courseRequestSummaries.get(1));
+      }
+      if (this.courseRequestSummaries.get(2) && this.courseRequestSummaries.get(2).indexOf('\n') > 0) {
+        this.semesterTwo = this.courseRequestSummaries.get(2).split('\n');
+      } else {
+        this.semesterTwo.push(this.courseRequestSummaries.get(2));
+      }
+      const diff = Math.abs(this.semesterOne.length - this.semesterTwo.length);
+      const blankSpaces: Array<string> = [];
+      for (let i = 0; i < diff; i++) {
+        blankSpaces.push('');
+      }
+      if (this.semesterOne.length > this.semesterTwo.length) {
+        // add to semesterTwo
+        this.semesterTwo = this.semesterTwo.concat(blankSpaces);
+      } else if (this.semesterOne.length < this.semesterTwo.length) {
+        // add to semesterOne
+        this.semesterOne = this.semesterOne.concat(blankSpaces);
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-12" id="semester">
     <app-request-list [courses]="primaryCourses"
+                      [courseRequestSummaries]="primaryCourseSummaryMap"
                       selectionType="Primary"></app-request-list>
 
     <app-review-alert-message [visible]="canClickCheckbox() === false"
@@ -10,6 +11,7 @@
 
     <app-request-list *ngIf="alternatesAvailable && alternateCourses.length > 0"
                       [courses]="alternateCourses"
+                      [courseRequestSummaries]="alternateCourseSummaryMap"
                       selectionType="Alternate"></app-request-list>
 
     <app-review-alert-message [visible]="alternatesAvailable && alternateCourses.length === 0"

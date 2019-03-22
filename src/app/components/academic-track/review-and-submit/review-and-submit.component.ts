@@ -19,6 +19,8 @@ export class ReviewAndSubmitComponent implements OnInit {
   alternateCoursesMap = new Map<string, ReviewCourseSelection>();
   primaryCourses: Array<ReviewCourseSelection>;
   alternateCourses: Array<ReviewCourseSelection>;
+  primaryCourseSummaryMap = new Map<number, string>();
+  alternateCourseSummaryMap = new Map<number, string>();
 
   alternatesAvailable = false;
   submitting = false;
@@ -73,6 +75,9 @@ export class ReviewAndSubmitComponent implements OnInit {
 
     this.courseDataService.semesterComplete.asObservable().subscribe(c => this.semesterComplete = c);
     this.courseDataService.updateSemesterComplete();
+    this.courseDataService.getSummaries(this.educationId);
+    this.primaryCourseSummaryMap = this.courseDataService.primaryCourseSummaryMap;
+    this.alternateCourseSummaryMap = this.courseDataService.alternateCourseSummaryMap;
 
     this.primaryCourses = Array.from(this.primaryCoursesMap.values());
     this.alternateCourses = Array.from(this.alternateCoursesMap.values());
