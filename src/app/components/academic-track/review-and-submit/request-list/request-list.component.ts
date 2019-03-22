@@ -27,18 +27,9 @@ export class RequestListComponent implements OnInit {
       if (this.courseRequestSummaries.get(2)) {
         this.semesterTwo = this.courseRequestSummaries.get(2).split('\n');
       }
-      const diff = Math.abs(this.semesterOne.length - this.semesterTwo.length);
-      const blankSpaces: Array<string> = [];
-      for (let i = 0; i < diff; i++) {
-        blankSpaces.push('');
-      }
-      if (this.semesterOne.length > this.semesterTwo.length) {
-        // add to semesterTwo
-        this.semesterTwo = this.semesterTwo.concat(blankSpaces);
-      } else if (this.semesterOne.length < this.semesterTwo.length) {
-        // add to semesterOne
-        this.semesterOne = this.semesterOne.concat(blankSpaces);
-      }
+      const maxLength = this.semesterOne.length >= this.semesterTwo.length ? this.semesterOne.length : this.semesterTwo.length;
+      this.semesterOne.length = maxLength;
+      this.semesterTwo.length = maxLength;
     }
   }
 }
