@@ -12,6 +12,8 @@ export class CourseDataService {
   public academicTrackFromEducationRecord = new BehaviorSubject<AcademicTrack>(null);
   public anyCourseUpdating = new BehaviorSubject<boolean>(false);
   public semesterComplete = new BehaviorSubject<Map<string, boolean>>(null);
+  public primaryCourseSummaryMap = new Map<number, string>(null);
+  public alternateCourseSummaryMap = new Map<number, string>(null);
 
   public static setRelatedCoursesForTrack(track: AcademicTrack): void {
     const courses: AcademicTrackCourseSelection[] = [];
@@ -63,5 +65,24 @@ export class CourseDataService {
         {buffer: false, escape: false}
       );
     }
+  }
+
+  public getSummaries(educationId: string): void {
+    Visualforce.remoting.Manager.invokeAction(
+      'IEE_AcademyCourseRequestController.getCourseRequestSummariesByEducationId',
+      educationId,
+      (json: string) => {
+        if (json) {
+          const j = JSON.parse(json);
+          this.primaryCourseSummaryMap.set(1, j.Semester_1_Primary_Requests__c);
+          this.primaryCourseSummaryMap.set(2, j.Semester_2_Primary_Requests__c);
+          this.alternateCourseSummaryMap.set(1, j.Semester_1_Alternate_Requests__c);
+          this.alternateCourseSummaryMap.set(2, j.Semester_2_Alternate_Requests__c);
+        } else {
+          console.log('something went wrong while retrieving summaries');
+        }
+      },
+      {buffer: false, escape: false}
+    );
   }
 }

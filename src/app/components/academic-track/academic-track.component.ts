@@ -43,6 +43,7 @@ export class AcademicTrackComponent implements OnInit {
       this.educationId = p.get('educationId');
       if (this.educationId) {
         this.courseDataService.getData(this.educationId);
+        this.courseDataService.getSummaries(this.educationId);
       }
     });
 

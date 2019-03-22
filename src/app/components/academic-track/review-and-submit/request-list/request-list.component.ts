@@ -9,6 +9,9 @@ import {ReviewCourseSelection} from '../../../../classes/ReviewCourseSelection';
 export class RequestListComponent implements OnInit {
   @Input() selectionType: string;
   @Input() courses: Array<ReviewCourseSelection>;
+  @Input() courseRequestSummaries: Map<number, string>;
+  semesterOne: Array<string> = [];
+  semesterTwo: Array<string> = [];
 
   constructor() {
   }
@@ -16,6 +19,17 @@ export class RequestListComponent implements OnInit {
   ngOnInit() {
     if (this.courses) {
       this.courses.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+    }
+    if (this.courseRequestSummaries) {
+      if (this.courseRequestSummaries.get(1)) {
+        this.semesterOne = this.courseRequestSummaries.get(1).split('\n');
+      }
+      if (this.courseRequestSummaries.get(2)) {
+        this.semesterTwo = this.courseRequestSummaries.get(2).split('\n');
+      }
+      const maxLength = this.semesterOne.length >= this.semesterTwo.length ? this.semesterOne.length : this.semesterTwo.length;
+      this.semesterOne.length = maxLength;
+      this.semesterTwo.length = maxLength;
     }
   }
 }
