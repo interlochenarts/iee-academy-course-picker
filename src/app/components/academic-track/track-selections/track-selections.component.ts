@@ -31,11 +31,6 @@ export class TrackSelectionsComponent implements OnInit {
   }
 
   onToggleTrackSelection(selection: AcademicTrackSelection) {
-    this.trackSelections.forEach(trackSelection => {
-      if (trackSelection.expanded && selection !== trackSelection) {
-        trackSelection.expanded = false;
-      }
-    });
     selection.expanded = !selection.expanded;
   }
 }
