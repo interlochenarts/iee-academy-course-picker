@@ -27,7 +27,7 @@
   padding: 10px 0;
 }
 .track-name .track-grid-item h1 {
-  font-size: 2.0em;
+  font-size: 2em;
 }
 .track-name .track-grid-left {
   justify-content: center;
@@ -56,5 +56,8 @@
 }
 .course-selection span {
   margin: 0.5em;
+}
+.small-p-right {
+  padding-right: 0.5em;
 }
 /*# sourceMappingURL=alternates.component.css.map */

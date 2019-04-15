@@ -16,7 +16,7 @@
 .request-list-container .course-row.first {
   border-top: 0;
 }
-.course-header-row {
+.request-list-container .course-header-row {
   padding: 1em 0 0 0;
   text-align: center;
 }
