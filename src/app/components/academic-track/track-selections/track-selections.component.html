@@ -2,7 +2,7 @@
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
     <div class="col-xs-12 track-grid-wrapper">
       <div class="track-grid-item">
-        <i *ngIf="selection.selectedCount >= selection.minSelections"
+        <i *ngIf="selection.selectedCount >= selection.minSelections && !(selection.minSelections == 0 && selection.selectedCount == 0)"
            class="fa fa-check-circle satisfied fa-2x"></i>
         <i *ngIf="selection.selectedCount < selection.minSelections"
            class="fa fa-exclamation-triangle not-satisfied fa-2x"></i>
