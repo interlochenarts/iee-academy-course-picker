@@ -13,7 +13,8 @@
             <h4>{{selection.selectionName.split('-')[0].trim()}}</h4>
           </div>
           <div class="col-xs-12 col-md-6">
-            Selections Required: {{selection.minSelections}}
+            <span *ngIf="selection.minSelections > 0">Selected {{selection.selectedCount}} of {{selection.minSelections}} required</span>
+            <span *ngIf="selection.minSelections == 0">Selected {{selection.minSelections}}</span>
           </div>
         </div>
       </div>
