@@ -2,9 +2,11 @@
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   margin: 1em 1em 0 1em;
   border: 1px solid rgb(204, 204, 204);
+
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -12,29 +14,39 @@
   cursor: pointer;
 
   background-color: #f3f3f3;
+
   &:hover {
     background-color: #ddd;
   }
 
   .track-grid-wrapper {
-    display:grid;
+    display: grid;
     grid-gap: 10px;
-    grid-template-columns: 10% 37% 36.5% 16.5%;
-  }
+    grid-template-columns: 13% 74% 13%;
 
-  .track-grid-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
+    .track-grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
 
-    h1 {
-      font-size: 2.0em;
+      h1 {
+        font-size: 2.0em;
+      }
+
+      .row {
+        width: 100%;
+
+        .col-xs-12, .col-md-6 {
+          display: flex;
+          align-items: center;
+        }
+      }
     }
-  }
 
-  .track-grid-left {
-    justify-content: center;
+    .track-grid-left {
+      justify-content: left;
+    }
   }
 }
 
@@ -70,4 +82,8 @@
 
 .small-p-right {
   padding-right: 0.5em;
+}
+
+.small-p-left {
+  padding-left: 0.05em;
 }
