@@ -18,19 +18,27 @@
 .track-name .track-grid-wrapper {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 10% 37% 36.5% 16.5%;
+  grid-template-columns: 13% 74% 13%;
 }
-.track-name .track-grid-item {
+.track-name .track-grid-wrapper .track-grid-item {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 0;
 }
-.track-name .track-grid-item h1 {
+.track-name .track-grid-wrapper .track-grid-item h1 {
   font-size: 2em;
 }
-.track-name .track-grid-left {
-  justify-content: center;
+.track-name .track-grid-wrapper .track-grid-item .row {
+  width: 100%;
+}
+.track-name .track-grid-wrapper .track-grid-item .row .col-xs-12,
+.track-name .track-grid-wrapper .track-grid-item .row .col-md-6 {
+  display: flex;
+  align-items: center;
+}
+.track-name .track-grid-wrapper .track-grid-left {
+  justify-content: left;
 }
 .track-selection {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
@@ -59,5 +67,8 @@
 }
 .small-p-right {
   padding-right: 0.5em;
+}
+.small-p-left {
+  padding-left: 0.05em;
 }
 /*# sourceMappingURL=alternates.component.css.map */
