@@ -1,4 +1,4 @@
-<div *ngFor="let selection of trackSelections let i = index" class="row">
+<div *ngFor="let selection of trackSelections; let i = index" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
     <div class="col-xs-12 track-grid-wrapper">
       <div class="track-grid-item">
