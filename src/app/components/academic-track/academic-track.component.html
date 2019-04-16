@@ -20,6 +20,7 @@
 <div class="well">
   <app-track-selections *ngIf="alternatesSelected === false && reviewAndSubmitSelected === false"
                         [educationId]="educationId"
+                        [requiredSelections]="academicTrack.requiredBySemester.get(selectedTerm)"
                         [trackSelections]="academicTrack.trackSelectionsBySemester.get(selectedTerm)"></app-track-selections>
   <app-alternates *ngIf="alternatesSelected === true"
                   [educationId]="educationId"
