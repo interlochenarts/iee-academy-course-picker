@@ -23,6 +23,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class TrackSelectionsComponent implements OnInit {
   @Input() educationId: string;
   @Input() trackSelections: AcademicTrackSelection[];
+  @Input() requiredSelections: number;
 
   constructor() {
   }

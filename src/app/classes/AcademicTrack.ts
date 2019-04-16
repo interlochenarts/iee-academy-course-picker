@@ -5,6 +5,7 @@ export class AcademicTrack {
   name: string;
   type: string;
   instructions: string;
+  requiredBySemester: Map<string, number> = new Map<string, number>();
   trackSelections: Array<AcademicTrackSelection> = [];
   trackSelectionsBySemester: Map<string, Array<AcademicTrackSelection>> = new Map<string, Array<AcademicTrackSelection>>();
 
@@ -23,8 +24,13 @@ export class AcademicTrack {
       tss.push(ats);
 
       academicTrack.trackSelectionsBySemester.set(sem, tss);
-    });
 
+      // Keep track of the number of required course selections per semester
+      let required = academicTrack.requiredBySemester.get(sem) || 0;
+      if (ats.minSelections > 0) { required++; }
+
+      academicTrack.requiredBySemester.set(sem, required);
+    });
     return academicTrack;
   }
 }

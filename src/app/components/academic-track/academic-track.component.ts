@@ -50,7 +50,17 @@ export class AcademicTrackComponent implements OnInit {
     this.courseDataService.academicTrackFromEducationRecord.asObservable().subscribe(at => {
       if (at) {
         this.academicTrack = at;
-        this.trackSelectionsWithAlternates = this.academicTrack.trackSelections.filter(ats => ats.allowAlternates === true);
+        const trackSelectionsWithAltsBySem = new Map<string, AcademicTrackSelection[]>();
+        // Split up the track selections by semester for display on Alternates tab
+        this.academicTrack.trackSelections.filter(ats => ats.allowAlternates === true).forEach(sel => {
+          const selections = trackSelectionsWithAltsBySem.get(sel.semester) || [];
+          selections.push(sel);
+          trackSelectionsWithAltsBySem.set(sel.semester, selections);
+        });
+        // Combine the track selections by semester
+        Array.from(trackSelectionsWithAltsBySem.keys()).sort().forEach(sem => {
+          this.trackSelectionsWithAlternates = this.trackSelectionsWithAlternates.concat(trackSelectionsWithAltsBySem.get(sem));
+        });
         this.alternatesAvailable = this.trackSelectionsWithAlternates.length > 0;
         this.terms = Array.from(at.trackSelectionsBySemester.keys()).sort();
         this.selectedTerm = this.terms[0];

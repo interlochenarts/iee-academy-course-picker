@@ -1,4 +1,4 @@
-<div *ngFor="let selection of trackSelections" class="row">
+<div *ngFor="let selection of trackSelections; let i = index" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
     <div class="col-xs-12 track-grid-wrapper">
       <div class="track-grid-item">
@@ -33,4 +33,5 @@
                            [selection]="selection"></app-course-checkbox>
     </div>
   </div>
+  <div *ngIf="i == requiredSelections - 1" class="col-xs-12 optional-heading"><h4>Optional</h4><hr/></div>
 </div>
