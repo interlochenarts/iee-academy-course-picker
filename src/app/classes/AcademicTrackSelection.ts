@@ -33,4 +33,10 @@ export class AcademicTrackSelection {
       (accumulator, selection) => selection.isPrimarySelection ? accumulator + 1 : accumulator, 0
     );
   }
+
+  get selectedAltsCount(): number {
+    return this.courseSelections.reduce(
+      (accumulator, selection) => selection.isAlternateSelection ? accumulator + 1 : accumulator, 0
+    );
+  }
 }

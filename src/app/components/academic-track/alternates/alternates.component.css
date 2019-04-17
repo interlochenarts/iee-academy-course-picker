@@ -37,6 +37,17 @@
   display: flex;
   align-items: center;
 }
+.track-name .track-grid-wrapper .track-grid-item .track-info {
+  display: block !important;
+}
+.track-name .track-grid-wrapper .track-grid-item .track-info .semester {
+  font-size: 1.1rem;
+  padding: 0;
+}
+.track-name .track-grid-wrapper .track-grid-item .track-info .selected {
+  font-size: 0.9rem;
+  padding: 0;
+}
 .track-name .track-grid-wrapper .track-grid-left {
   justify-content: left;
 }
