@@ -7,8 +7,9 @@
           <div class="col-xs-12 col-md-6">
             <h4>{{selection.selectionName.split('-')[0].trim()}}</h4>
           </div>
-          <div class="col-xs-12 col-md-6">
-            {{selection.semester}}
+          <div class="col-xs-12 col-md-6 track-info">
+            <div class="col-xs-12 semester">{{selection.semester}}</div>
+            <div class="col-xs-12 selected">Selected {{selection.selectedAltsCount}}</div>
           </div>
         </div>
       </div>

@@ -29,6 +29,9 @@
 .track-name .track-grid-wrapper .track-grid-item h1 {
   font-size: 2em;
 }
+.track-name .track-grid-wrapper .track-grid-item .selected {
+  font-size: 0.9rem;
+}
 .track-name .track-grid-wrapper .track-grid-item .row {
   width: 100%;
 }
