@@ -1,13 +1,13 @@
 <div *ngFor="let selection of trackSelectionsWithAlts" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
-    <div class="col-xs-12 track-grid-wrapper">
+    <div class="col-12 track-grid-wrapper">
       <div class="track-grid-item"></div>
       <div class="track-grid-item">
         <div class="row">
-          <div class="col-xs-12 col-md-6">
+          <div class="col-12 col-md-6">
             <h4>{{selection.selectionName.split('-')[0].trim()}}</h4>
           </div>
-          <div class="col-xs-12 col-md-6">
+          <div class="col-12 col-md-6">
             {{selection.semester}}
           </div>
         </div>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
-    <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
+    <div class="course-selection col-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
                            [semester]="selection.semester"
