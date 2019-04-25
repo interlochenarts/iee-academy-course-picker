@@ -31,11 +31,6 @@ export class AlternatesComponent implements OnInit {
   }
 
   onToggleTrackSelection(selection: AcademicTrackSelection) {
-    this.trackSelectionsWithAlts.forEach(trackSelection => {
-      if (trackSelection.expanded && selection !== trackSelection) {
-        trackSelection.expanded = false;
-      }
-    });
     selection.expanded = !selection.expanded;
   }
 }
