@@ -1,4 +1,4 @@
-<div class="checkbox-container col-9 col-md-10"
+<div class="checkbox-container col-9 col-md-10 align-items-center d-flex"
      (click)="onClickCheckbox()"
      [ngClass]="{disabled: isDisabled()}">
   <div class="checkbox col-3 col-md-2" *ngIf="!anyCourseUpdating">
@@ -6,7 +6,7 @@
            [checked]="isChecked()"
            [disabled]="isDisabled()">
     <label [ngClass]="{disabled: isDisabled()}">
-      <i class="fa fa-check"></i>
+      <i class="fa fa-check pl-4"></i>
     </label>
   </div>
   <div class="checkbox col-3 col-md-2" *ngIf="anyCourseUpdating">
