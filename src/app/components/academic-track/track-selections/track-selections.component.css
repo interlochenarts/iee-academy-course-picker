@@ -33,6 +33,9 @@
 .track-name .track-grid-wrapper .track-grid-item h4 {
   font-size: 1.3rem;
 }
+.track-name .track-grid-wrapper .track-grid-item .selected {
+  font-size: 0.9rem;
+}
 .track-name .track-grid-wrapper .track-grid-item .row {
   width: 100%;
 }
