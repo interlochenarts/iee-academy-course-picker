@@ -47,9 +47,9 @@ export class CourseCheckboxComponent implements OnInit {
   isDisabled(): boolean {
     if (this.isPrimary) {
       return this.anyCourseUpdating === true || this.course.isAlternateSelection || !this.course.isPrimarySelection
-        && (this.selection.selectedCount >= this.selection.maxSelections);
+        && (this.selection.selectedCount >= this.selection.maxSelections) || this.course.defaultIndicator;
     } else {
-      return this.anyCourseUpdating === true || this.course.isPrimarySelection;
+      return this.anyCourseUpdating === true || this.course.isPrimarySelection || this.course.defaultIndicator;
     }
   }
 
