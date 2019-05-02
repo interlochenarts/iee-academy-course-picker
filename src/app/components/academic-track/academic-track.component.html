@@ -1,21 +1,24 @@
 <ul class="nav nav-tabs">
-  <li role="presentation"
-      class="active"
+  <li role="presentation" class="nav-item"
       *ngFor="let term of terms"
-      [ngClass]="{active: term === selectedTerm}">
-    <a href="javascript:void(0);" (click)="onChangeTerm(term)">{{term}}</a>
+  >
+    <a [ngClass]="{active: term === selectedTerm}" href="javascript:void(0);" (click)="onChangeTerm(term)" class="nav-link">
+      <i *ngIf="semesterComplete.get(term)" class="fa fa-check-circle satisfied"></i>
+      <i *ngIf="semesterComplete.get(term) === false" class="fa fa-exclamation-triangle not-satisfied"></i>
+      {{term}}
+    </a>
   </li>
-  <li role="presentation" *ngIf="alternatesAvailable === true" [ngClass]="{active: alternatesSelected}">
-    <a href="javascript:void(0);" (click)="onSelectAlternates()">Alternates</a>
+  <li role="presentation" *ngIf="alternatesAvailable === true">
+    <a [ngClass]="{active: alternatesSelected}" href="javascript:void(0);" (click)="onSelectAlternates()" class="nav-link">Alternates</a>
   </li>
-  <li role="presentation"
-      [ngClass]="{active: reviewAndSubmitSelected}">
-    <a href="javascript:void(0);" (click)="onSelectReviewAndSubmit()">Review & Submit</a>
+  <li role="presentation">
+    <a [ngClass]="{active: reviewAndSubmitSelected}" href="javascript:void(0);" (click)="onSelectReviewAndSubmit()" class="nav-link">Review & Submit</a>
   </li>
 </ul>
 <div class="well">
   <app-track-selections *ngIf="alternatesSelected === false && reviewAndSubmitSelected === false"
                         [educationId]="educationId"
+                        [requiredSelections]="academicTrack.requiredBySemester.get(selectedTerm)"
                         [trackSelections]="academicTrack.trackSelectionsBySemester.get(selectedTerm)"></app-track-selections>
   <app-alternates *ngIf="alternatesSelected === true"
                   [educationId]="educationId"

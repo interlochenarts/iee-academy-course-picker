@@ -1,54 +1,49 @@
-<div class="row" *ngFor="let sem of semesters">
-  <div class="semester-name">
-    <h2>{{sem}}</h2>
-  </div>
-  <div class="semester">
-    <h4>Primary Selections</h4>
-    <div class="alert alert-danger"
-         *ngIf="selectedPrimaryCoursesBySemester.get(sem).length === 0">
-      <i class="fa fa-exclamation-triangle" style="color:red"></i> You have not selected any primary course requests for
-      this session.
-    </div>
-    <ul *ngIf="selectedPrimaryCoursesBySemester.get(sem).length > 0">
-      <li *ngFor="let course of selectedPrimaryCoursesBySemester.get(sem)">
-        {{course.courseDescription}}
-      </li>
-    </ul>
+<div class="row">
+  <div class="col-12" id="semester">
+    <app-request-list [courses]="primaryCourses"
+                      [courseRequestSummaries]="primaryCourseSummaryMap"
+                      selectionType="Primary"></app-request-list>
 
-    <div *ngIf="semesterHasAlternates.get(sem)">
-      <h4>Alternate Selections</h4>
-      <ul *ngIf="selectedAlternateCoursesBySemester.get(sem).length > 0">
-        <li *ngFor="let course of selectedAlternateCoursesBySemester.get(sem)">
-          {{course.courseDescription}}
-        </li>
-      </ul>
-    </div>
+    <app-review-alert-message [visible]="canClickCheckbox() === false"
+                              alertType="danger"
+                              icon="fa-exclamation-triangle"
+                              [message]="primaryErrorMessage"></app-review-alert-message>
+
+    <app-request-list *ngIf="alternatesAvailable && alternateCourses.length > 0"
+                      [courses]="alternateCourses"
+                      [courseRequestSummaries]="alternateCourseSummaryMap"
+                      selectionType="Alternate"></app-request-list>
+
+    <app-review-alert-message [visible]="alternatesAvailable && alternateCourses.length === 0"
+                              alertType="info"
+                              icon="fa-exclamation-triangle"
+                              message="While an alternate choice is not required, you are encouraged to choose one or more."></app-review-alert-message>
   </div>
 </div>
 
 <div class="row check-description"
      [ngClass]="{disabled: canClickCheckbox() === false, clickable: canClickCheckbox()}"
      (click)="onClickCheckbox()">
-  <div class="col-xs-2 col-md-1 text-right">
+  <div class="col-2 col-md-1 text-right">
     <div class="checkbox">
       <input type="checkbox" [checked]="readyToSubmit"/>
-      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check"></i></label>
+      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check pl-4"></i></label>
     </div>
   </div>
-  <div class="col-xs-10 col-md-11">
+  <div class="col-10 col-md-11">
     <div class="no-select nudge-down">
       I'm ready to submit my course requests.
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 info-text margin-top-sm">
+  <div class="col-12 info-text margin-top-sm">
     Once you have submitted your course requests you won't be able to change this information.
     While we do our best to honor course requests, we are not able to guarantee placement in any course.
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 text-right margin-top-sm">
+  <div class="col-12 text-right margin-top-sm">
     <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="submitting === true"></i>
     <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!readyToSubmit || submitting">
       Submit

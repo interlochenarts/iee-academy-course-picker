@@ -2,6 +2,7 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
   margin: 1em 1em 0 1em;
   border: 1px solid #cccccc;
+  width: 100%;
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
@@ -27,10 +28,21 @@
   padding: 10px 0;
 }
 .track-name .track-grid-wrapper .track-grid-item h1 {
-  font-size: 2.0em;
+  font-size: 2em;
+}
+.track-name .track-grid-wrapper .track-grid-item h4 {
+  font-size: 1.3rem;
+}
+.track-name .track-grid-wrapper .track-grid-item .selected {
+  font-size: 0.9rem;
 }
 .track-name .track-grid-wrapper .track-grid-item .row {
   width: 100%;
+}
+.track-name .track-grid-wrapper .track-grid-item .row .col-12,
+.track-name .track-grid-wrapper .track-grid-item .row .col-md-6 {
+  display: flex;
+  align-items: center;
 }
 .track-name .track-grid-wrapper .track-grid-left {
   justify-content: left;
@@ -45,6 +57,7 @@
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
   padding: 10px 5px;
+  width: 100%;
 }
 .track-selection ul {
   list-style: none;
@@ -65,5 +78,16 @@
 }
 .course-selection span {
   margin: 0.5em;
+}
+.small-p-right {
+  padding-right: 0.5em;
+}
+.optional-heading {
+  margin-bottom: -1em;
+  margin-top: 1em;
+}
+.optional-heading h4 {
+  margin-bottom: -1em;
+  font-size: 1.2rem;
 }
 /*# sourceMappingURL=track-selections.component.css.map */

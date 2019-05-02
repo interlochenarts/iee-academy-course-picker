@@ -1,4 +1,9 @@
 <div class="modal-container" #modalContainer></div>
-<div class="col-xs-12">
-  <router-outlet></router-outlet>
+<div class="row margin-top-sm">
+  <div class="col-12 col-md-4 order-md-last">
+    <div *ngIf="instructions && instructions.length > 0" class="well instructions" [innerHTML]="instructions"></div>
+  </div>
+  <div class="col-12 col-md-8 order-md-first">
+    <router-outlet></router-outlet>
+  </div>
 </div>

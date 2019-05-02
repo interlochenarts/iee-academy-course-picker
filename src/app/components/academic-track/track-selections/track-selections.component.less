@@ -2,6 +2,7 @@
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   margin: 1em 1em 0 1em;
   border: 1px solid rgb(204, 204, 204);
+  width: 100%;
 
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
@@ -14,15 +15,15 @@
   cursor: pointer;
 
   background-color: #f3f3f3;
+
   &:hover {
     background-color: #eee;
   }
 
   .track-grid-wrapper {
-    display:grid;
+    display: grid;
     grid-gap: 10px;
     grid-template-columns: 13% 74% 13%;
-
 
     .track-grid-item {
       display: flex;
@@ -34,8 +35,21 @@
         font-size: 2.0em;
       }
 
+      h4 {
+        font-size: 1.3rem;
+      }
+
+      .selected {
+        font-size: 0.9rem;
+      }
+
       .row {
         width: 100%;
+
+        .col-12, .col-md-6 {
+          display: flex;
+          align-items: center;
+        }
       }
     }
 
@@ -55,6 +69,7 @@
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
   padding: 10px 5px;
+  width: 100%;
 
   ul {
     list-style: none;
@@ -80,5 +95,19 @@
 
   span {
     margin: 0.5em;
+  }
+}
+
+.small-p-right {
+  padding-right: 0.5em;
+}
+
+.optional-heading {
+  margin-bottom: -1em;
+  margin-top: 1em;
+
+  h4 {
+    margin-bottom: -1em;
+    font-size: 1.2rem;
   }
 }

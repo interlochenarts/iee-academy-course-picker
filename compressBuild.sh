@@ -16,10 +16,10 @@ if [ ! -d "$FOLDER" ]; then
    mkdir -p $FOLDER;
 fi
 
-cd dist
+cd dist/iee-academy-course-picker
 
 # compress new version
 echo -e "Compressing files to $FILE.$EXT"
-zip -r "../$FOLDER/$FILE.$EXT" *
+zip -r "../../$FOLDER/$FILE.$EXT" *
 
 echo -e "\nFinished creating $FILE.$EXT\n"

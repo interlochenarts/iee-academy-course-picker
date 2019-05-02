@@ -1,28 +1,31 @@
 <div *ngFor="let selection of trackSelectionsWithAlts" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
-    <div class="col-xs-12 track-grid-wrapper">
-      <div class="track-grid-item track-grid-left">
-        <h1>{{selection.selectionName.split('-')[0].trim()}}</h1>
-      </div>
-      <div class="track-grid-item">
-        <h1>{{selection.semester}}</h1>
-      </div>
+    <div class="col-12 track-grid-wrapper">
       <div class="track-grid-item"></div>
       <div class="track-grid-item">
-        <i class="fa fa-caret-down fa-3x" *ngIf="!selection.expanded"></i>
-        <i class="fa fa-caret-up fa-3x" *ngIf="selection.expanded"></i>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h4>{{selection.selectionName.split('-')[0].trim()}}</h4>
+          </div>
+          <div class="col-12 col-md-6 track-info">
+            <div class="col-12 semester">{{selection.semester}}</div>
+            <div class="col-12 selected">Selected {{selection.selectedAltsCount}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="track-grid-item">
+        <i class="fa fa-caret-down fa-3x small-p-right" *ngIf="!selection.expanded"></i>
+        <i class="fa fa-caret-up fa-3x small-p-right" *ngIf="selection.expanded"></i>
       </div>
     </div>
   </div>
   <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
-    <div class="col-xs-12">
-      <p [innerHtml]="selection.instructions"></p>
-    </div>
-    <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
+    <div class="course-selection col-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
+                           [semester]="selection.semester"
                            [isPrimary]="false"
-                           [selection]="selection"></app-course-checkbox>
+                           [selection]="selection" class="d-flex"></app-course-checkbox>
     </div>
   </div>
 </div>
