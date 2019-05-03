@@ -18,4 +18,7 @@ a#modal-close:hover,
 a#modal-close:active {
   color: darkgray;
 }
+.modal-header {
+  display: flex;
+}
 /*# sourceMappingURL=modal-container.component.css.map */

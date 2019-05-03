@@ -1,15 +1,15 @@
 <div *ngFor="let selection of trackSelectionsWithAlts" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
-    <div class="col-xs-12 track-grid-wrapper">
+    <div class="col-12 track-grid-wrapper">
       <div class="track-grid-item"></div>
       <div class="track-grid-item">
         <div class="row">
-          <div class="col-xs-12 col-md-6">
+          <div class="col-12 col-md-6">
             <h4>{{selection.selectionName.split('-')[0].trim()}}</h4>
           </div>
-          <div class="col-xs-12 col-md-6 track-info">
-            <div class="col-xs-12 semester">{{selection.semester}}</div>
-            <div class="col-xs-12 selected">Selected {{selection.selectedAltsCount}}</div>
+          <div class="col-12 col-md-6 track-info">
+            <div class="col-12 semester">{{selection.semester}}</div>
+            <div class="col-12 selected">Selected {{selection.selectedAltsCount}}</div>
           </div>
         </div>
       </div>
@@ -20,12 +20,12 @@
     </div>
   </div>
   <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
-    <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
+    <div class="course-selection col-12" *ngFor="let course of selection.courseSelections" [@shrinkGrow]="'in'">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
                            [semester]="selection.semester"
                            [isPrimary]="false"
-                           [selection]="selection"></app-course-checkbox>
+                           [selection]="selection" class="d-flex"></app-course-checkbox>
     </div>
   </div>
 </div>

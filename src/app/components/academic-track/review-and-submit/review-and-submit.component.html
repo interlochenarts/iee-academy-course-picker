@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12" id="semester">
+  <div class="col-12" id="semester">
     <app-request-list [courses]="primaryCourses"
                       [courseRequestSummaries]="primaryCourseSummaryMap"
                       selectionType="Primary"></app-request-list>
@@ -24,26 +24,26 @@
 <div class="row check-description"
      [ngClass]="{disabled: canClickCheckbox() === false, clickable: canClickCheckbox()}"
      (click)="onClickCheckbox()">
-  <div class="col-xs-2 col-md-1 text-right">
+  <div class="col-2 col-md-1 text-right">
     <div class="checkbox">
       <input type="checkbox" [checked]="readyToSubmit"/>
-      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check"></i></label>
+      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check pl-4"></i></label>
     </div>
   </div>
-  <div class="col-xs-10 col-md-11">
+  <div class="col-10 col-md-11">
     <div class="no-select nudge-down">
       I'm ready to submit my course requests.
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 info-text margin-top-sm">
+  <div class="col-12 info-text margin-top-sm">
     Once you have submitted your course requests you won't be able to change this information.
     While we do our best to honor course requests, we are not able to guarantee placement in any course.
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 text-right margin-top-sm">
+  <div class="col-12 text-right margin-top-sm">
     <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="submitting === true"></i>
     <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="!readyToSubmit || submitting">
       Submit
