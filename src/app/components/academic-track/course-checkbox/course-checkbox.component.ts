@@ -13,6 +13,7 @@ export class CourseCheckboxComponent implements OnInit {
   @Input() course: AcademicTrackCourseSelection;
   @Input() educationId: string;
   @Input() isPrimary: boolean;
+  @Input() semester: string;
   @Input() selection: AcademicTrackSelection;
   @Input() anyCourseUpdating = false;
 
@@ -32,7 +33,8 @@ export class CourseCheckboxComponent implements OnInit {
       } else {
         this.course.isAlternateSelection = !this.course.isAlternateSelection;
       }
-      this.course.addOrRemoveRequest(this.educationId, this.courseDataService.anyCourseUpdating);
+      this.course.addOrRemoveRequest(this.educationId, this.courseDataService.anyCourseUpdating, true)
+        .then( r => {this.courseDataService.updateSemesterComplete(); this.courseDataService.getSummaries(this.educationId); });
     }
   }
 
@@ -45,9 +47,9 @@ export class CourseCheckboxComponent implements OnInit {
   isDisabled(): boolean {
     if (this.isPrimary) {
       return this.anyCourseUpdating === true || this.course.isAlternateSelection || !this.course.isPrimarySelection
-        && (this.selection.selectedCount >= this.selection.maxSelections);
+        && (this.selection.selectedCount >= this.selection.maxSelections) || this.course.defaultIndicator;
     } else {
-      return this.anyCourseUpdating === true || this.course.isPrimarySelection;
+      return this.anyCourseUpdating === true || this.course.isPrimarySelection || this.course.defaultIndicator;
     }
   }
 

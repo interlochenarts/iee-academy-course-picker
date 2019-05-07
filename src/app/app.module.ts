@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {CourseDataService} from './services/course-data.service';
@@ -15,6 +14,8 @@ import {ReviewAndSubmitComponent} from './components/academic-track/review-and-s
 import {AlternatesComponent} from './components/academic-track/alternates/alternates.component';
 import {TrackSelectionsComponent} from './components/academic-track/track-selections/track-selections.component';
 import { CourseCheckboxComponent } from './components/academic-track/course-checkbox/course-checkbox.component';
+import { RequestListComponent } from './components/academic-track/review-and-submit/request-list/request-list.component';
+import { ReviewAlertMessageComponent } from './components/academic-track/review-and-submit/review-alert-message/review-alert-message.component';
 
 const appRoutes: Routes = [
   {path: ':educationId', component: AcademicTrackComponent}
@@ -29,12 +30,13 @@ const appRoutes: Routes = [
     ReviewAndSubmitComponent,
     AlternatesComponent,
     TrackSelectionsComponent,
-    CourseCheckboxComponent
+    CourseCheckboxComponent,
+    RequestListComponent,
+    ReviewAlertMessageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true, paramsInheritanceStrategy: 'always'})
   ],

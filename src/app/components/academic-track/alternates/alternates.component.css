@@ -2,6 +2,7 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
   margin: 1em 1em 0 1em;
   border: 1px solid #cccccc;
+  width: 100%;
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
@@ -18,18 +19,40 @@
 .track-name .track-grid-wrapper {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 30% 30% 30% 10%;
+  grid-template-columns: 13% 74% 13%;
 }
-.track-name .track-grid-item {
+.track-name .track-grid-wrapper .track-grid-item {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 0;
 }
-.track-name .track-grid-item h1 {
-  font-size: 2.0em;
+.track-name .track-grid-wrapper .track-grid-item h1 {
+  font-size: 2em;
 }
-.track-name .track-grid-left {
+.track-name .track-grid-wrapper .track-grid-item h4 {
+  font-size: 1.3rem;
+}
+.track-name .track-grid-wrapper .track-grid-item .row {
+  width: 100%;
+}
+.track-name .track-grid-wrapper .track-grid-item .row .col-12,
+.track-name .track-grid-wrapper .track-grid-item .row .col-md-6 {
+  display: flex;
+  align-items: center;
+}
+.track-name .track-grid-wrapper .track-grid-item .track-info {
+  display: block !important;
+}
+.track-name .track-grid-wrapper .track-grid-item .track-info .semester {
+  font-size: 1.1rem;
+  padding: 0;
+}
+.track-name .track-grid-wrapper .track-grid-item .track-info .selected {
+  font-size: 0.9rem;
+  padding: 0;
+}
+.track-name .track-grid-wrapper .track-grid-left {
   justify-content: left;
 }
 .track-selection {
@@ -42,6 +65,7 @@
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
   padding: 10px 5px;
+  width: 100%;
 }
 .track-selection ul {
   list-style: none;
@@ -56,5 +80,11 @@
 }
 .course-selection span {
   margin: 0.5em;
+}
+.small-p-right {
+  padding-right: 0.5em;
+}
+.small-p-left {
+  padding-left: 0.05em;
 }
 /*# sourceMappingURL=alternates.component.css.map */

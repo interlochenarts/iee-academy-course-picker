@@ -1,4 +1,10 @@
-.col-xs-12 {
-  padding: 0;
+.instructions {
+  border: 2px solid #b01e33;
+}
+@media only screen and (min-width: 992px) {
+  .instructions {
+    position: relative;
+    top: 2.7em;
+  }
 }
 /*# sourceMappingURL=app.component.css.map */

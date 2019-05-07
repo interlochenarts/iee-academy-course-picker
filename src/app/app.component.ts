@@ -1,6 +1,7 @@
 import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ModalContainerComponent} from './components/modal-container/modal-container.component';
 import {ModalService} from './services/modal.service';
+import {CourseDataService} from './services/course-data.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,25 @@ import {ModalService} from './services/modal.service';
   ]
 })
 export class AppComponent implements OnInit {
+  instructions: string;
   @ViewChild('modalContainer', {read: ViewContainerRef}) modalContainer: ViewContainerRef;
   modalRef: ComponentRef<ModalContainerComponent>;
 
 
   constructor(
     private modalService: ModalService,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private courseDataService: CourseDataService) {
   }
 
   ngOnInit() {
-
+    this.courseDataService.academicTrackFromEducationRecord.asObservable().subscribe({
+      next: academicTrack => {
+        if (academicTrack) {
+          this.instructions = academicTrack.instructions;
+        }
+      }
+    });
     this.modalService.modalVisible.asObservable().subscribe({
       next: modalVisible => {
         if (modalVisible) {
