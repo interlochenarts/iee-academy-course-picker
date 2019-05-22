@@ -1,24 +1,24 @@
-<div class="checkbox-container col-9 col-md-10 align-items-center d-flex"
+<div class="checkbox-container col-xs-9 col-md-10"
      (click)="onClickCheckbox()"
      [ngClass]="{disabled: isDisabled()}">
-  <div class="checkbox col-3 col-md-2" *ngIf="!anyCourseUpdating">
+  <div class="checkbox col-xs-3 col-md-2" *ngIf="!anyCourseUpdating">
     <input type="checkbox" [id]="course.courseNumber" [name]="course.courseNumber"
            [checked]="isChecked()"
            [disabled]="isDisabled()">
     <label [ngClass]="{disabled: isDisabled()}">
-      <i class="fa fa-check pl-4"></i>
+      <i class="fa fa-check"></i>
     </label>
   </div>
-  <div class="checkbox col-3 col-md-2" *ngIf="anyCourseUpdating">
+  <div class="checkbox col-xs-3 col-md-2" *ngIf="anyCourseUpdating">
     <i class="fa fa-2x fa-spinner fa-pulse fa-fw"></i>
   </div>
-  <div class="col-9 col-md-8 description">
+  <div class="col-xs-9 col-md-8 description">
     <h4>{{course.courseDescription}}<span *ngIf="course.relatedCourseNumber" class="full-year"> (Full Year)</span></h4>
     <span *ngIf="course.isPrimarySelection && !isPrimary">Chosen as a primary choice</span>
     <span *ngIf="course.isAlternateSelection && isPrimary">Chosen as an alternate choice</span>
   </div>
 </div>
-<div class="info col-2 col-md-1">
+<div class="info col-xs-2 col-md-1">
   <div class="text-center">
     <a [title]="course.courseNumber + ': ' + course.courseDescription + ' description'" class="detail-link"
        href="javascript:void(0);"

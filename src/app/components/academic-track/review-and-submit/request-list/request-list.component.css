@@ -12,7 +12,6 @@
 .request-list-container .course-row {
   padding: 0.5em 0;
   border-top: 1px solid #ccc;
-  display: flex;
 }
 .request-list-container .course-row.first {
   border-top: 0;
@@ -20,6 +19,5 @@
 .request-list-container .course-header-row {
   padding: 1em 0 0 0;
   text-align: center;
-  display: flex;
 }
 /*# sourceMappingURL=request-list.component.css.map */

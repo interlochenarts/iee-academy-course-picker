@@ -1,17 +1,17 @@
-<div class="col-12 request-list-container">
+<div class="col-xs-12 request-list-container">
   <h3>{{selectionType}} Selections</h3>
-  <div class="col-12 course-header-row">
-    <div class="col-6 course">
+  <div class="col-xs-12 course-header-row">
+    <div class="col-xs-6 course">
       <h4>Semester 1</h4>
     </div>
-    <div class="col-6 course">
+    <div class="col-xs-6 course">
       <h4>Semester 2</h4>
     </div>
   </div>
   <div *ngFor="let course of semesterOne; let i = index"
        [ngClass]="{first: i === 0}"
-       class="course-row col-12">
-    <div class="col-6 course">{{course}}</div>
-    <div class="col-6 course">{{semesterTwo[i]}}</div>
+       class="course-row col-xs-12">
+    <div class="col-xs-6 course">{{course}}</div>
+    <div class="col-xs-6 course">{{semesterTwo[i]}}</div>
   </div>
 </div>

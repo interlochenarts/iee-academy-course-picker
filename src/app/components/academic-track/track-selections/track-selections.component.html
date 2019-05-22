@@ -1,6 +1,6 @@
 <div *ngFor="let selection of trackSelections; let i = index" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
-    <div class="col-12 track-grid-wrapper">
+    <div class="col-xs-12 track-grid-wrapper">
       <div class="track-grid-item">
         <i *ngIf="selection.selectedCount >= selection.minSelections && !(selection.minSelections == 0 && selection.selectedCount == 0)"
            class="fa fa-check-circle satisfied fa-2x"></i>
@@ -9,10 +9,10 @@
       </div>
       <div class="track-grid-item">
         <div class="row">
-          <div class="col-12 col-md-6">
+          <div class="col-xs-12 col-md-6">
             <h4>{{selection.selectionName.split('-')[0].trim()}}</h4>
           </div>
-          <div class="col-12 col-md-6 selected">
+          <div class="col-xs-12 col-md-6 selected">
             <span *ngIf="selection.minSelections > 0">Selected {{selection.selectedCount}} of {{selection.minSelections}} required</span>
             <span *ngIf="selection.minSelections == 0">Selected {{selection.selectedCount}}</span>
           </div>
@@ -25,13 +25,13 @@
     </div>
   </div>
   <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
-    <div class="course-selection col-12" *ngFor="let course of selection.courseSelections">
+    <div class="course-selection col-xs-12" *ngFor="let course of selection.courseSelections">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
                            [semester]="selection.semester"
                            [isPrimary]="true"
-                           [selection]="selection" class="d-flex"></app-course-checkbox>
+                           [selection]="selection"></app-course-checkbox>
     </div>
   </div>
-  <div *ngIf="i == requiredSelections - 1" class="col-12 optional-heading"><h4>Optional</h4><hr/></div>
+  <div *ngIf="i == requiredSelections - 1" class="col-xs-12 optional-heading"><h4>Optional</h4><hr/></div>
 </div>

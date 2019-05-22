@@ -12,9 +12,6 @@
   border-radius: 5px;
   padding: 0.5em;
 }
-.checkbox-container h4 {
-  font-size: 1.3rem;
-}
 .checkbox-container:hover {
   background-color: #a7e6fb;
   border-color: #3cc7f6;
