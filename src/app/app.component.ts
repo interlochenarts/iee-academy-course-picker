@@ -13,7 +13,7 @@ import {CourseDataService} from './services/course-data.service';
 })
 export class AppComponent implements OnInit {
   instructions: string;
-  @ViewChild('modalContainer', {read: ViewContainerRef}) modalContainer: ViewContainerRef;
+  @ViewChild('modalContainer', { read: ViewContainerRef, static: true }) modalContainer: ViewContainerRef;
   modalRef: ComponentRef<ModalContainerComponent>;
 
 
