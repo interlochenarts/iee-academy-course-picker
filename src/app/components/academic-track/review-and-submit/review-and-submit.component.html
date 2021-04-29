@@ -15,7 +15,7 @@
                       selectionType="Alternate"></app-request-list>
 
     <app-review-alert-message [visible]="alternatesAvailable && alternateCourses.length === 0"
-                              alertType="info"
+                              alertType="warning"
                               icon="fa-exclamation-triangle"
                               message="While an alternate choice is not required, you are encouraged to choose one or more."></app-review-alert-message>
   </div>
@@ -37,7 +37,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-12 info-text margin-top-sm">
+  <div class="col-12 info-text mx-4 my-3 pr-5">
     Once you have submitted your course requests you won't be able to change this information.
     While we do our best to honor course requests, we are not able to guarantee placement in any course.
   </div>

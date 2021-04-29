@@ -1,12 +1,8 @@
 .track-name {
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   margin: 1em 1em 0 1em;
-  border: 1px solid rgb(204, 204, 204);
   width: 100%;
-
-  -webkit-border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
+  color: white;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -14,10 +10,10 @@
   user-select: none;
   cursor: pointer;
 
-  background-color: #f3f3f3;
+  background-color: #218274;
 
   &:hover {
-    background-color: #eee;
+    background-color: #173f35;
   }
 
   .track-grid-wrapper {
@@ -63,13 +59,9 @@
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   overflow: hidden;
   margin: 0 1em 1em 1em;
-  border: 1px solid rgb(204, 204, 204);
-  border-top: 0;
-  -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
-  padding: 10px 5px;
+  padding: 10px 0;
   width: 100%;
+  background: #218274;
 
   ul {
     list-style: none;
@@ -82,19 +74,15 @@
   }
 }
 
-.satisfied {
-  color: #91bb3e;
-}
-
-.not-satisfied {
-  color: #d42741;
-}
-
 .course-selection {
-  margin: 0.5em;
-
+  transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
+  border-top: 1px solid white;
   span {
     margin: 0.5em;
+  }
+
+  &:hover {
+    background-color: #173f35;
   }
 }
 
@@ -103,11 +91,9 @@
 }
 
 .optional-heading {
-  margin-bottom: -1em;
-  margin-top: 1em;
+  margin: 1rem 1rem 0;
 
   h4 {
-    margin-bottom: -1em;
     font-size: 1.2rem;
   }
 }
