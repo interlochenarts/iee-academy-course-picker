@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {useHash: true, paramsInheritanceStrategy: 'always'})
+    RouterModule.forRoot(appRoutes, { useHash: true, paramsInheritanceStrategy: 'always', relativeLinkResolution: 'legacy' })
   ],
   providers: [CourseDataService, ModalService],
   bootstrap: [AppComponent]
