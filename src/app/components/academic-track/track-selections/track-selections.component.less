@@ -1,6 +1,6 @@
 .track-name {
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
-  margin: 1em 1em 0 1em;
+  margin: 1rem 1rem 0 1rem;
   width: 100%;
   color: white;
 
@@ -18,17 +18,17 @@
 
   .track-grid-wrapper {
     display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 13% 74% 13%;
+    grid-template-columns: 13% auto 17%;
+    padding: 0;
 
     .track-grid-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding: 10px;
 
       h1 {
-        font-size: 2.0em;
+        font-size: 2.0rem;
       }
 
       h4 {
@@ -58,8 +58,7 @@
 .track-selection {
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   overflow: hidden;
-  margin: 0 1em 1em 1em;
-  padding: 10px 0;
+  margin: 0 1rem 1rem 1rem;
   width: 100%;
   background: #218274;
 
@@ -78,16 +77,12 @@
   transition: all 0.3s cubic-bezier(.25, .8, .7, 1);
   border-top: 1px solid white;
   span {
-    margin: 0.5em;
+    margin: 0.5rem;
   }
 
   &:hover {
     background-color: #173f35;
   }
-}
-
-.small-p-right {
-  padding-right: 0.5em;
 }
 
 .optional-heading {

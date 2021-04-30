@@ -6,15 +6,18 @@
   user-select: none;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
   cursor: pointer;
-  padding: 0.5em;
+  padding: 0.5em 0;
 }
 .checkbox-container h4 {
   font-size: 1.3rem;
 }
 .checkbox-container.disabled,
 .checkbox-container.disabled:hover {
-  text-decoration: line-through;
   cursor: not-allowed;
+}
+.checkbox-container.disabled h4,
+.checkbox-container.disabled:hover h4 {
+  text-decoration: line-through;
 }
 .checkbox-container .description {
   margin: 10px 0;

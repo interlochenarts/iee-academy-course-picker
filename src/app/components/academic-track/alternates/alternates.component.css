@@ -1,34 +1,30 @@
 .track-name {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
-  margin: 1em 1em 0 1em;
-  border: 1px solid #cccccc;
+  margin: 1rem 1rem 0 1rem;
   width: 100%;
-  -webkit-border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
+  color: white;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  background-color: #f3f3f3;
+  background-color: #218274;
 }
 .track-name:hover {
-  background-color: #ddd;
+  background-color: #173f35;
 }
 .track-name .track-grid-wrapper {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 13% 74% 13%;
+  grid-template-columns: 13% auto 17%;
 }
 .track-name .track-grid-wrapper .track-grid-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 0;
+  padding: 10px;
 }
 .track-name .track-grid-wrapper .track-grid-item h1 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 .track-name .track-grid-wrapper .track-grid-item h4 {
   font-size: 1.3rem;
@@ -58,14 +54,9 @@
 .track-selection {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
   overflow: hidden;
-  margin: 0 1em 1em 1em;
-  border: 1px solid #cccccc;
-  border-top: 0;
-  -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
-  padding: 10px 5px;
+  margin: 0 1rem 1rem 1rem;
   width: 100%;
+  background: #218274;
 }
 .track-selection ul {
   list-style: none;
@@ -76,15 +67,13 @@
   list-style: none;
 }
 .course-selection {
-  margin: 0.5em;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
+  border-top: 1px solid white;
 }
 .course-selection span {
   margin: 0.5em;
 }
-.small-p-right {
-  padding-right: 0.5em;
-}
-.small-p-left {
-  padding-left: 0.05em;
+.course-selection:hover {
+  background-color: #173f35;
 }
 /*# sourceMappingURL=alternates.component.css.map */

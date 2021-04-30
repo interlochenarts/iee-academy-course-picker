@@ -10,14 +10,16 @@
 
   cursor: pointer;
 
-  padding: 0.5em;
+  padding: 0.5em 0;
 
   h4 {
     font-size: 1.3rem;
   }
 
   &.disabled, &.disabled:hover {
-    text-decoration: line-through;
+    h4 {
+      text-decoration: line-through;
+    }
     cursor: not-allowed;
   }
 

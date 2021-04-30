@@ -16,6 +16,7 @@
     <h4>{{course.courseDescription}}<span *ngIf="course.relatedCourseNumber" class="full-year"> (Full Year)</span></h4>
     <span *ngIf="course.isPrimarySelection && !isPrimary">Chosen as a primary choice</span>
     <span *ngIf="course.isAlternateSelection && isPrimary">Chosen as an alternate choice</span>
+    <span *ngIf="course.defaultIndicator">Required</span>
   </div>
 </div>
 <div class="info col-3 col-md-2 d-flex align-items-center" (click)="showDescriptionPopup()">
