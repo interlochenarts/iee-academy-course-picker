@@ -1,6 +1,4 @@
-<div class="col-12" *ngIf="visible">
-  <div class="alert alert-{{alertType}}">
-    <i class="fa {{icon}}" style="color:red"></i>
-    {{message}}
-  </div>
+<div class="col-12 {{alertType}} m-3" *ngIf="visible">
+  <i class="fa {{icon}}"></i>
+  {{message}}
 </div>

@@ -1,0 +1,10 @@
+.warning .fa {
+  color: #eed484;
+}
+.danger {
+  color: #be3a34;
+}
+.danger .fa {
+  color: #be3a34;
+}
+/*# sourceMappingURL=review-alert-message.component.css.map */

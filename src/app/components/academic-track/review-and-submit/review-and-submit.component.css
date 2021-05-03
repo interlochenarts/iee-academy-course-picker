@@ -13,14 +13,14 @@
 }
 .checkbox label i {
   position: relative;
-  left: -20px;
+  left: -25px;
 }
 .checkbox label.disabled {
   cursor: not-allowed;
 }
 .nudge-down {
   position: relative;
-  top: 0.25em;
+  top: 0.25rem;
 }
 .col-2,
 .col-md-1 {

@@ -1,11 +1,16 @@
-<div *ngFor="let selection of trackSelections; let i = index" class="row">
+<div class="row">
+  <div class="col-12 optional-heading">
+    <h4>Complete your schedule by making selections in the subjects below.</h4>
+  </div>
+</div><div *ngFor="let selection of trackSelections; let i = index" class="row">
   <div class="track-name row" (click)="onToggleTrackSelection(selection)">
     <div class="col-12 track-grid-wrapper">
       <div class="track-grid-item">
-        <i *ngIf="selection.selectedCount >= selection.minSelections && !(selection.minSelections == 0 && selection.selectedCount == 0)"
-           class="fa fa-check-circle satisfied fa-2x"></i>
+        <i
+          *ngIf="selection.selectedCount >= selection.minSelections && !(selection.minSelections == 0 && selection.selectedCount == 0)"
+          class="fa fa-check-circle fa-2x"></i>
         <i *ngIf="selection.selectedCount < selection.minSelections"
-           class="fa fa-exclamation-triangle not-satisfied fa-2x"></i>
+           class="fa fa-exclamation-triangle fa-2x"></i>
       </div>
       <div class="track-grid-item">
         <div class="row">
@@ -13,7 +18,8 @@
             <h4>{{selection.selectionName.replace('-', ' - ')}}</h4>
           </div>
           <div class="col-12 col-md-6 selected">
-            <span *ngIf="selection.minSelections > 0">Selected {{selection.selectedCount}} of {{selection.minSelections}} required</span>
+            <span *ngIf="selection.minSelections > 0">Selected {{selection.selectedCount}}
+              of {{selection.minSelections}} required</span>
             <span *ngIf="selection.minSelections == 0">Selected {{selection.selectedCount}}</span>
           </div>
         </div>
@@ -25,7 +31,7 @@
     </div>
   </div>
   <div class="track-selection row" *ngIf="selection.expanded" [@shrinkGrow]="'in'">
-    <div class="course-selection col-12" *ngFor="let course of selection.courseSelections">
+    <div class="course-selection col-12 px-0" *ngFor="let course of selection.courseSelections">
       <app-course-checkbox [course]="course"
                            [educationId]="educationId"
                            [semester]="selection.semester"
@@ -33,5 +39,4 @@
                            [selection]="selection" class="d-flex"></app-course-checkbox>
     </div>
   </div>
-  <div *ngIf="i == requiredSelections - 1" class="col-12 optional-heading"><h4>Complete your schedule by making selections in the subjects below.</h4><hr/></div>
 </div>
