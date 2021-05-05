@@ -25,6 +25,7 @@
 .checkbox-container .checkbox input[type="checkbox"] + label {
   color: white;
   border-color: white;
+  background-color: transparent;
 }
 .checkbox-container .checkbox label {
   color: white;
