@@ -21,13 +21,13 @@
   </div>
 </div>
 
-<div class="row check-description mx-4 my-3 pr-5"
+<div class="row check-description mx-4 my-3 pe-5"
      [ngClass]="{disabled: canClickCheckbox() === false, clickable: canClickCheckbox()}"
      (click)="onClickCheckbox()">
   <div class="col-2 col-md-1">
     <div class="checkbox">
       <input type="checkbox" [checked]="readyToSubmit"/>
-      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check pl-4"></i></label>
+      <label [ngClass]="{disabled: canClickCheckbox() === false}"><i class="fa fa-check ps-4"></i></label>
     </div>
   </div>
   <div class="col-10 col-md-11">
@@ -36,7 +36,7 @@
     </div>
   </div>
 </div>
-<div class="row mx-4 my-3 pr-5">
+<div class="row mx-4 my-3 pe-5">
   <div class="col-12 info-text p-0">
     Once you have submitted your course requests you won't be able to change this information.
     While we do our best to honor course requests, we are not able to guarantee placement in any course.
