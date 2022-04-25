@@ -4,12 +4,9 @@ import {ModalService} from './services/modal.service';
 import {CourseDataService} from './services/course-data.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  entryComponents: [
-    ModalContainerComponent
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   instructions: string;
