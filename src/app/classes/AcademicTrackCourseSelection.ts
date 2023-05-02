@@ -16,6 +16,7 @@ export class AcademicTrackCourseSelection {
   relatedCourseNumber: string;
   relatedCourse: AcademicTrackCourseSelection;
   semester: string;
+  sessionId: string;
 
   isPrimarySelection = false;
   isAlternateSelection = false;
@@ -40,6 +41,7 @@ export class AcademicTrackCourseSelection {
         this.courseOfferingId,
         requestType,
         deleteRequest,
+        this.sessionId,
         (savedId: string) => {
           this.courseRequestId = savedId;
           if (saveRelated && this.relatedCourse) {
