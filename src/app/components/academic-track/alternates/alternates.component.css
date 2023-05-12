@@ -1,6 +1,6 @@
 .track-name {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
-  margin: 1rem 1rem 0 1rem;
+  margin: 1rem 0 0 0;
   width: 100%;
   color: white;
   -webkit-user-select: none;
