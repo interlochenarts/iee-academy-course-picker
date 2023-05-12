@@ -54,7 +54,7 @@
 .track-selection {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.7, 1);
   overflow: hidden;
-  margin: 0 1rem 1rem 1rem;
+  margin: 0;
   width: 100%;
   background: #218274;
 }
