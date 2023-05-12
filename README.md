@@ -16,9 +16,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ##### Production Build
 
-`ng build --prod --aot --output-hashing=none`
+`ng build --configuration=production --aot --output-hashing=none`
 
-`--prod` sets the build into production mode, which strips out all dev libraries.
+`--configuration=production` sets the build into production mode, which strips out all dev libraries.
 
 `--aot` changes the build mode to 'ahead of time' so more compilation happens before the JIT compiler on the browser gets reached.
 
