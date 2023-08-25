@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NG_CLI_VERSION=14.2.11
+NG_CLI_VERSION=v14-lts
 
 cd ..;
 
@@ -12,7 +12,7 @@ fi
 
 # lets us use the nvm commands
 source "$HOME/.nvm/nvm.sh"
-nvm install --lts
+nvm install
 
 # get our dependencies
 echo -e "\n===> npm install <===\n"
