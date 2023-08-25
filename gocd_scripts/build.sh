@@ -12,7 +12,7 @@ fi
 
 # lets us use the nvm commands
 source "$HOME/.nvm/nvm.sh"
-nvm install
+nvm install # use .nvmrc
 
 # get our dependencies
 echo -e "\n===> npm install <===\n"
