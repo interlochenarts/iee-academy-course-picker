@@ -26,14 +26,14 @@ fi
 
 # lets us use the nvm commands
 source "$HOME/.nvm/nvm.sh"
-nvm install --lts
+nvm install
 
 echo -e "===> SFDX Update <===\n"
 npm install -g sfdx-cli@${SFDX_CLI_VERSION}
 sfdx --version
 
-echo -e "sfdx force:auth:jwt:grant -i${SFDC_CONSUMER_KEY} -f/home/wwadmin/certificates/${KEY_FILE} -u${sfdcUser} -a${DX_ENV} -r${LOGIN_SERVER}"
-sfdx force:auth:jwt:grant -i${SFDC_CONSUMER_KEY} -f/home/wwadmin/certificates/${KEY_FILE} -u${sfdcUser} -a${DX_ENV} -r${LOGIN_SERVER}
+echo -e "sfdx auth jwt grant --client-id=${SFDC_CONSUMER_KEY} --jwt-key-file=/home/wwadmin/certificates/${KEY_FILE} --username=${sfdcUser} --alias=${DX_ENV} --instance-url=${LOGIN_SERVER}"
+sfdx auth jwt grant --client-id=${SFDC_CONSUMER_KEY} --jwt-key-file=/home/wwadmin/certificates/${KEY_FILE} --username=${sfdcUser} --alias=${DX_ENV} --instance-url=${LOGIN_SERVER}
 
-echo -e "sfdx force:mdapi:deploy -dSalesforce/src -u${DX_ENV} -w60"
-sfdx force:mdapi:deploy -dSalesforce/src -u${DX_ENV} -w60
+echo -e "sfdx project deploy start --metadata-dir=Salesforce/src -alias=${DX_ENV} --wait=60"
+sfdx fproject deploy start --metadata-dir=Salesforce/src -alias=${DX_ENV} --wait=60
