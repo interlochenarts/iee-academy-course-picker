@@ -29,7 +29,7 @@ source "$HOME/.nvm/nvm.sh"
 nvm install
 
 echo -e "===> SFDX Update <===\n"
-npm install -g sfdx-cli@${SFDX_CLI_VERSION}
+npm install -g @salesforce/cli@${SFDX_CLI_VERSION}
 sfdx --version
 
 echo -e "sfdx auth jwt grant --client-id=${SFDC_CONSUMER_KEY} --jwt-key-file=/home/wwadmin/certificates/${KEY_FILE} --username=${sfdcUser} --alias=${DX_ENV} --instance-url=${LOGIN_SERVER}"
