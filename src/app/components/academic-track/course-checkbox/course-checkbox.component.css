@@ -18,6 +18,7 @@
 .checkbox-container.disabled h4,
 .checkbox-container.disabled:hover h4 {
   text-decoration: line-through;
+  text-decoration-thickness: 2px;
 }
 .checkbox-container .description {
   margin: 10px 0;
