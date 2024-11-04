@@ -31,7 +31,7 @@
     "@angular/compiler-cli": "v14-lts",
     "@angular/language-service": "v14-lts",
     "@popperjs/core": "^2.11.5",
-    "@salesforce/cli": "^2.5.8",
+    "@salesforce/cli": "~2.64.8",
     "@types/node": "^12.11.1",
     "bootstrap": "^5.2.3",
     "eslint": "^8.13.0",
