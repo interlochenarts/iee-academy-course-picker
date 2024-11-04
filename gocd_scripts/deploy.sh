@@ -22,10 +22,6 @@ if [[ -z ${KEY_FILE} ]]; then
   echo -e "Missing KEY_FILE environment variable"
 fi
 
-if [[ -z ${SFDX_CLI_VERSION} ]]; then
-  echo -e "Missing SFDX_CLI_VERSION environment variable"
-fi
-
 # lets us use the nvm commands
 source "$HOME/.nvm/nvm.sh"
 nvm install; # use .nvmrc
