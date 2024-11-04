@@ -27,6 +27,8 @@ source "$HOME/.nvm/nvm.sh"
 nvm install; # use .nvmrc
 npm clean-install;
 
+export CI=true
+
 echo -e "\n===> SFDX Version <===\n"
 version=("${SF}" --version)
 "${version[@]}" # run the version command
@@ -35,6 +37,6 @@ auth=("${SF}" auth jwt grant --client-id="${SFDC_CONSUMER_KEY}" --jwt-key-file="
 echo -e "${auth[@]}"
 "${auth[@]}" # run the auth command
 
-deploy=("${SF}" project deploy start --metadata-dir=Salesforce/src --target-org="${DX_ENV}" --wait=60)
+deploy=("${SF}" project deploy start --metadata-dir=../Salesforce/src --target-org="${DX_ENV}" --wait=60)
 echo -e "${deploy[@]}"
 "${deploy[@]}" # run the deploy command
